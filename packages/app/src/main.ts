@@ -7,6 +7,17 @@ import { HeliosUI } from "./ui/overlay.js";
 import "./styles/fonts.css";
 import "./styles/helios.css";
 
+function focusDistance(viz: { group: THREE.Group }): number {
+  let d = 4;
+  viz.group.traverse((o) => {
+    if (o instanceof THREE.Mesh && o.geometry) {
+      const bs = o.geometry.boundingSphere;
+      if (bs) d = Math.max(d, bs.radius * 2.6);
+    }
+  });
+  return d;
+}
+
 async function main(): Promise<void> {
   const container = document.getElementById("app")!;
 
@@ -29,7 +40,7 @@ async function main(): Promise<void> {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x020208);
+  renderer.setClearColor(0x000000);
   container.appendChild(renderer.domElement);
 
   const camera = new THREE.PerspectiveCamera(
@@ -46,7 +57,7 @@ async function main(): Promise<void> {
     maxDistance: 400,
   });
 
-  sceneViz.scene.add(new THREE.AmbientLight(0x444466, 0.6));
+  sceneViz.scene.add(new THREE.AmbientLight(0xffffff, 0.25));
   const sun = sceneViz.get("star/sol");
   if (sun) {
     sun.group.add(new THREE.PointLight(0xfff0d0, 3, 0, 2));
@@ -57,9 +68,10 @@ async function main(): Promise<void> {
     onFocus: (id) => {
       const viz = sceneViz.get(id);
       if (!viz) return;
+      sceneViz.scene.updateMatrixWorld(true);
       const world = new THREE.Vector3();
       viz.group.getWorldPosition(world);
-      controls.focusOn(world, 20);
+      controls.flyTo(world, focusDistance(viz));
       ui.showInfo(viz.instance);
       ui.setActive(id);
     },
@@ -77,19 +89,21 @@ async function main(): Promise<void> {
   });
 
   // ---- simulation loop -----------------------------------------------------
-  let simTime = 0;
+  // Sim time is seconds since the J2000 epoch; at timeRate = 1 the sim runs in
+  // real time, so the default clock shows the current calendar date.
+  const J2000_SEC = Date.UTC(2000, 0, 1, 12) / 1000;
+  let simTime = Date.now() / 1000 - J2000_SEC;
   let last = performance.now();
-  const secondsPerYear = 31557600;
 
   function tick(now: number): void {
     const dt = Math.min((now - last) / 1000, 0.1);
     last = now;
     if (!ui.isPaused) {
-      simTime += dt * ui.timeRate * secondsPerYear;
+      simTime += dt * ui.timeRate;
       sceneViz.update(simTime);
     }
     ui.updateHUD(simTime);
-    controls.update();
+    controls.update(dt);
     renderer.render(sceneViz.scene, camera);
     requestAnimationFrame(tick);
   }

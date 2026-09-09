@@ -25,9 +25,9 @@ export function buildOrbitLine(
   }
   const geo = new THREE.BufferGeometry().setFromPoints(points);
   const mat = new THREE.LineBasicMaterial({
-    color: 0x444477,
+    color: 0x888888,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.35,
   });
   return new THREE.Line(geo, mat);
 }

@@ -12,7 +12,7 @@ export interface HeliosUIHandlers {
   onPause: (paused: boolean) => void;
 }
 
-const SECONDS_PER_YEAR = 31557600;
+const J2000_MS = Date.UTC(2000, 0, 1, 12);
 const SECONDS_PER_DAY = 86400;
 const AU_M = 1.495978707e11;
 const L_SUN_W = 3.828e26;
@@ -54,10 +54,9 @@ export class HeliosUI {
     this.countEl = this.root.querySelectorAll("#obj-count, #obj-count-2");
 
     this.rateEl.addEventListener("input", () => {
-      const v = parseFloat(this.rateEl.value);
-      this.timeRate = v;
-      this.rateLabel.textContent = `${v.toFixed(1)}×`;
-      this.handlers.onTimeRate(v);
+      this.timeRate = rateFromSlider(parseFloat(this.rateEl.value));
+      this.rateLabel.textContent = formatRate(this.timeRate);
+      this.handlers.onTimeRate(this.timeRate);
     });
     this.pauseBtn.addEventListener("click", () => {
       this.paused = !this.paused;
@@ -140,8 +139,9 @@ export class HeliosUI {
 
   /** Per-frame HUD update. simTimeS is the running simulation epoch in seconds. */
   updateHUD(simTimeS: number): void {
-    this.clockEl.textContent = formatYear(simTimeS);
-    this.dayClockEl.textContent = `${Math.floor(simTimeS / SECONDS_PER_DAY)} d`;
+    const d = new Date(J2000_MS + simTimeS * 1000);
+    this.clockEl.textContent = d.toISOString().slice(0, 10);
+    this.dayClockEl.textContent = d.toISOString().slice(11, 19) + "Z";
   }
 }
 
@@ -163,12 +163,19 @@ function fmt(v: number, unit: string): string {
   return `${num} <sub>${esc(unit)}</sub>`;
 }
 
-function formatYear(t: number): string {
-  const y = t / SECONDS_PER_YEAR;
-  const neg = y < 0 ? "-" : "";
-  const abs = Math.abs(y);
-  if (abs < 0.1) return `${neg}${(abs * 365.25).toFixed(1)} d`;
-  return `${neg}${abs.toFixed(2)} yr`;
+/** Map a slider position in [0, 1000] to a log time-rate in [1e-6, 1e6]. */
+function rateFromSlider(v: number): number {
+  return Math.pow(10, ((v / 1000) - 0.5) * 12);
+}
+
+function formatRate(r: number): string {
+  const a = Math.abs(r);
+  if (a >= 1e6) return (r / 1e6).toFixed(1) + "M×";
+  if (a >= 1e3) return (r / 1e3).toFixed(a >= 1e5 ? 0 : 1) + "k×";
+  if (a >= 100) return r.toFixed(0) + "×";
+  if (a >= 1) return r.toFixed(1) + "×";
+  if (a >= 0.01) return r.toPrecision(2) + "×";
+  return r.toExponential(1) + "×";
 }
 
 function section(title: string, body: string): string {
@@ -255,13 +262,13 @@ function layout(): string {
   <div class="hud-group">
     <div class="hud-clocks">
       <span class="hud-clock-label">Sim</span>
-      <span class="hud-clock" id="clock-sim">+0.00 yr</span>
-      <span class="hud-clock" id="clock-day">0 d</span>
+      <span class="hud-clock" id="clock-sim">2000-01-01</span>
+      <span class="hud-clock" id="clock-day">12:00:00Z</span>
     </div>
   </div>
   <div class="hud-group" id="hud-rate">
     <span class="eyebrow">Rate</span>
-    <input id="rate" type="range" min="0.1" max="200" step="0.1" value="1"/>
+    <input id="rate" type="range" min="0" max="1000" step="1" value="500"/>
     <span id="rate-label">1.0×</span>
     <button class="hud-btn" id="pause-btn">Pause</button>
   </div>
