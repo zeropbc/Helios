@@ -1,0 +1,87 @@
+{
+  "$schema": "https://helios.zero/schemas/object.schema.json",
+  "schema_version": "1.0",
+  "id": "moon/luna",
+  "type": "moon",
+  "identity": {
+    "name": "Luna",
+    "designations": ["Moon"],
+    "classification": {
+      "primary": "moon",
+      "subtype": "terrestrial"
+    }
+  },
+  "status": "confirmed",
+  "relationships": {
+    "parent": "planet/earth"
+  },
+  "discovery": {
+    "date": "prehistoric",
+    "method": "visual"
+  },
+  "measurements": {
+    "mass": {
+      "value": 0.0123,
+      "unit": "M_earth",
+      "source": "iau-2015"
+    },
+    "radius": {
+      "value": 0.2727,
+      "unit": "R_earth",
+      "source": "iau-2015"
+    },
+    "rotation": {
+      "period": {
+        "value": 27.322,
+        "unit": "day"
+      },
+      "direction": "prograde"
+    }
+  },
+  "components": {
+    "orbit": {
+      "type": "orbit",
+      "orbit": {
+        "type": "keplerian",
+        "primary": "planet/earth",
+        "semi_major_axis": {
+          "value": 384400,
+          "unit": "km",
+          "source": "iau-2015"
+        },
+        "eccentricity": 0.0549,
+        "period": {
+          "value": 27.322,
+          "unit": "day",
+          "source": "iau-2015"
+        }
+      }
+    },
+    "terrain": {
+      "type": "terrain",
+      "type_classification": "rocky_cratered"
+    }
+  },
+  "visual": {
+    "render": {
+      "model": "sphere",
+      "surface": {
+        "material": "terrain"
+      },
+      "color": {
+        "mode": "textured",
+        "value": "gray"
+      },
+      "scale": {
+        "mode": "physical"
+      }
+    }
+  },
+  "sources": {
+    "iau-2015": {
+      "type": "resolution",
+      "citation": "IAU 2015 Resolution B3: Recommended Nominal Conversion Constants",
+      "accessed": "2026-09-09"
+    }
+  }
+}

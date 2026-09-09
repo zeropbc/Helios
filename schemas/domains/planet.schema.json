@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "$id": "https://helios.zero/schemas/domains/planet.schema.json",
+  "title": "Planet",
+  "description": "Domain constraints for a planet. A planet is an object with a mass component that orbits a star — expressed purely through components, never hardcoded planet types.",
+  "allOf": [
+    { "$ref": "https://helios.zero/schemas/object.schema.json" },
+    {
+      "properties": {
+        "components": {
+          "type": "object",
+          "properties": {
+            "orbit": { "$ref": "https://helios.zero/schemas/components/orbit.schema.json" }
+          }
+        }
+      }
+    }
+  ]
+}

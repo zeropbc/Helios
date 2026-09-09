@@ -1,0 +1,42 @@
+{
+  "$schema": "https://helios.zero/schemas/domains/planet.schema.json",
+  "schema_version": "1.0",
+  "id": "planet/venus",
+  "type": "planet",
+  "identity": {
+    "name": "Venus",
+    "designations": ["Sol II"],
+    "classification": { "primary": "planet", "subtype": "terrestrial" }
+  },
+  "status": "confirmed",
+  "relationships": { "parent": "star/sol" },
+  "discovery": { "date": "prehistoric", "method": "visual" },
+  "measurements": {
+    "mass": { "value": 0.815, "unit": "M_earth", "source": "iau-2015" },
+    "radius": { "value": 0.949, "unit": "R_earth", "source": "iau-2015" }
+  },
+  "components": {
+    "orbit": {
+      "type": "orbit",
+      "orbit": {
+        "type": "keplerian",
+        "primary": "star/sol",
+        "semi_major_axis": { "value": 0.723, "unit": "AU", "source": "iau-2015" },
+        "eccentricity": 0.0068,
+        "period": { "value": 224.7, "unit": "day", "source": "iau-2015" }
+      }
+    },
+    "atmosphere": {
+      "type": "atmosphere",
+      "composition": { "CO2": { "fraction": 0.965 } },
+      "surface_pressure": { "value": 92, "unit": "bar" }
+    },
+    "terrain": { "type": "terrain", "type_classification": "terrestrial_rocky" }
+  },
+  "visual": {
+    "render": { "model": "sphere", "color": { "mode": "textured", "value": "pale_gold" }, "scale": { "mode": "physical" } }
+  },
+  "sources": {
+    "iau-2015": { "type": "resolution", "citation": "IAU 2015 Resolution B3", "accessed": "2026-09-09" }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "$schema": "https://helios.zero/schemas/domains/star.schema.json",
+  "schema_version": "1.0",
+  "id": "star/proxima-centauri",
+  "type": "star",
+  "identity": {
+    "name": "Proxima Centauri",
+    "designations": [
+      "Alpha Centauri C",
+      "GJ 551",
+      "HIP 70890",
+      "V645 Centauri",
+      "LHS 49"
+    ],
+    "classification": {
+      "primary": "star",
+      "subtype": "red_dwarf",
+      "spectral_type": "M5.5 Ve",
+      "variable_type": "UV_CETI"
+    }
+  },
+  "status": "confirmed",
+  "relationships": {
+    "parent": "system/alpha-centauri",
+    "companions": [
+      "star/alpha-centauri-a",
+      "star/alpha-centauri-b"
+    ],
+    "children": [
+      "planet/proxima-centauri-b",
+      "planet/proxima-centauri-c",
+      "planet/proxima-centauri-d"
+    ]
+  },
+  "discovery": {
+    "date": "1915",
+    "discoverer": ["Robert T. A. Innes"],
+    "institution": "Union Observatory"
+  },
+  "measurements": {
+    "parallax": {
+      "value": 768.0665,
+      "unit": "mas",
+      "uncertainty": 0.0499,
+      "source": "gaia-dr3"
+    },
+    "position": {
+      "frame": "ICRS",
+      "epoch": "J2016.0",
+      "right_ascension": {
+        "value": 217.4289417,
+        "unit": "deg",
+        "source": "gaia-dr3"
+      },
+      "declination": {
+        "value": -62.6794836,
+        "unit": "deg",
+        "source": "gaia-dr3"
+      }
+    },
+    "proper_motion": {
+      "frame": "ICRS",
+      "ra": {
+        "value": -3781.741,
+        "unit": "mas/yr",
+        "source": "gaia-dr3"
+      },
+      "dec": {
+        "value": 769.465,
+        "unit": "mas/yr",
+        "source": "gaia-dr3"
+      },
+      "radial_velocity": {
+        "value": -22.204,
+        "unit": "km/s",
+        "uncertainty": 0.032,
+        "source": "kervella-2017"
+      }
+    },
+    "mass": {
+      "value": 0.1221,
+      "unit": "M_sun",
+      "uncertainty": 0.0022,
+      "source": "mann-2015"
+    },
+    "radius": {
+      "value": 0.1542,
+      "unit": "R_sun",
+      "uncertainty": 0.0045,
+      "source": "mann-2015"
+    },
+    "effective_temperature": {
+      "value": 2980,
+      "unit": "K",
+      "uncertainty": 80,
+      "source": "ribas-2017"
+    },
+    "photometry": {
+      "apparent": {
+        "V": {
+          "value": 11.13,
+          "unit": "mag",
+          "uncertainty": 0.01,
+          "source": "gaia-dr3"
+        },
+        "J": {
+          "value": 5.35,
+          "unit": "mag",
+          "uncertainty": 0.02,
+          "source": "twomass"
+        },
+        "H": {
+          "value": 4.22,
+          "unit": "mag",
+          "uncertainty": 0.02,
+          "source": "twomass"
+        },
+        "K": {
+          "value": 4.384,
+          "unit": "mag",
+          "uncertainty": 0.033,
+          "source": "twomass"
+        }
+      },
+      "absolute": {
+        "V": {
+          "value": 15.6,
+          "unit": "mag",
+          "source": "helios-derived"
+        }
+      }
+    }
+  },
+  "derived": {
+    "distance": {
+      "value": 4.2465,
+      "unit": "ly",
+      "method": "parallax_inverse",
+      "source": "gaia-dr3"
+    },
+    "luminosity": {
+      "value": 0.0017,
+      "unit": "L_sun",
+      "method": "bolometric",
+      "source": "ribas-2017"
+    }
+  },
+  "components": {
+    "light_source": {
+      "type": "light_source",
+      "luminosity": {
+        "value": 0.0017,
+        "unit": "L_sun",
+        "uncertainty": 0.00008,
+        "source": "ribas-2017"
+      },
+      "effective_temperature": {
+        "value": 2980,
+        "unit": "K",
+        "uncertainty": 80,
+        "source": "ribas-2017"
+      },
+      "spectrum": {
+        "type": "blackbody"
+      }
+    },
+    "orbit": {
+      "type": "orbit",
+      "orbit": {
+        "type": "keplerian",
+        "primary": "system/alpha-centauri",
+        "semi_major_axis": {
+          "value": 8700,
+          "unit": "AU",
+          "uncertainty": {
+            "plus": 700,
+            "minus": 400
+          },
+          "source": "kervella-2017"
+        },
+        "eccentricity": 0.5,
+        "inclination": {
+          "value": 107.6,
+          "unit": "deg",
+          "uncertainty": {
+            "plus": 1.8,
+            "minus": 2.0
+          },
+          "source": "kervella-2017"
+        },
+        "longitude_of_ascending_node": {
+          "value": 126,
+          "unit": "deg",
+          "uncertainty": 5,
+          "source": "kervella-2017"
+        },
+        "argument_of_periapsis": {
+          "value": 72.3,
+          "unit": "deg",
+          "uncertainty": {
+            "plus": 8.7,
+            "minus": 6.6
+          },
+          "source": "kervella-2017"
+        },
+        "period": {
+          "value": 547000,
+          "unit": "yr",
+          "uncertainty": {
+            "plus": 66000,
+            "minus": 40000
+          },
+          "source": "kervella-2017"
+        },
+        "epoch": "J2016.0"
+      }
+    }
+  },
+  "variability": {
+    "type": "flare",
+    "classification": "UV_CETI",
+    "period": null
+  },
+  "notes": {
+    "visibility": "Too faint for naked eye",
+    "energy_output": "More than 85% of radiated power in infrared",
+    "flare_activity": "Flare star; randomly undergoes dramatic brightness changes due to magnetic activity"
+  },
+  "visual": {
+    "render": {
+      "model": "light_point",
+      "color": {
+        "mode": "blackbody"
+      },
+      "scale": {
+        "mode": "physical"
+      }
+    }
+  },
+  "sources": {
+    "gaia-dr3": {
+      "type": "catalogue",
+      "citation": "Gaia Collaboration (DR3), 2023",
+      "doi": "10.5270/esa-gaia3",
+      "accessed": "2026-09-09"
+    },
+    "mann-2015": {
+      "type": "paper",
+      "citation": "Mann et al. (2015), ApJ 804, 64",
+      "doi": "10.1088/0004-637X/804/1/64",
+      "accessed": "2026-09-09"
+    },
+    "ribas-2017": {
+      "type": "paper",
+      "citation": "Ribas et al. (2017), A&A 603, A58",
+      "doi": "10.1051/0004-6361/201730582",
+      "accessed": "2026-09-09"
+    },
+    "kervella-2017": {
+      "type": "paper",
+      "citation": "Kervella et al. (2017), A&A 598, L7",
+      "doi": "10.1051/0004-6361/201629985",
+      "accessed": "2026-09-09"
+    },
+    "twomass": {
+      "type": "catalogue",
+      "citation": "Two Micron All Sky Survey (2MASS), Cutri et al. (2003)",
+      "doi": "10.26131/IRSA2",
+      "accessed": "2026-09-09"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "$id": "https://helios.zero/schemas/components/orbit.schema.json",
+  "title": "Orbit Component",
+  "description": "A Keplerian orbit component attached to any object. The renderer does not care about the classification of the orbiting body.",
+  "type": "object",
+  "properties": {
+    "type": { "const": "orbit" },
+    "orbit": {
+      "type": "object",
+      "properties": {
+        "type": { "const": "keplerian" },
+        "primary": { "type": "string" },
+        "semi_major_axis": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "eccentricity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "inclination": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "longitude_of_ascending_node": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "argument_of_periapsis": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "mean_longitude": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "period": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "epoch": { "type": "string" }
+      },
+      "required": ["type", "primary"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["type", "orbit"],
+  "additionalProperties": false
+}

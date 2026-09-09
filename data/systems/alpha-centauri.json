@@ -1,0 +1,22 @@
+{
+  "$schema": "https://helios.zero/schemas/object.schema.json",
+  "schema_version": "1.0",
+  "id": "system/alpha-centauri",
+  "type": "system",
+  "identity": {
+    "name": "Alpha Centauri",
+    "designations": ["Rigil Kentaurus"],
+    "classification": { "primary": "system" }
+  },
+  "status": "confirmed",
+  "relationships": {
+    "children": [
+      "star/alpha-centauri-a",
+      "star/alpha-centauri-b",
+      "star/proxima-centauri"
+    ]
+  },
+  "notes": {
+    "scope": "The trinary system containing Alpha Centauri A, B, and Proxima Centauri"
+  }
+}

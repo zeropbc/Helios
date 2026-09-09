@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "$id": "https://helios.zero/schemas/domains/star.schema.json",
+  "title": "Star",
+  "description": "Domain constraints for a star. A star is NOT specially handled by the engine — it is any object that carries a light_source component. This schema only documents domain-level conventions.",
+  "allOf": [
+    { "$ref": "https://helios.zero/schemas/object.schema.json" },
+    {
+      "properties": {
+        "components": {
+          "type": "object",
+          "properties": {
+            "light_source": { "$ref": "https://helios.zero/schemas/components/light-source.schema.json" }
+          }
+        }
+      }
+    }
+  ]
+}

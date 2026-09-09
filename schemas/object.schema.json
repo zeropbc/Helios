@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "$id": "https://helios.zero/schemas/object.schema.json",
+  "title": "Helios Object",
+  "description": "The universal container for any astronomical object. What an object IS comes from identity.classification; what it DOES comes from its components.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "type": "string" },
+    "id": { "type": "string" },
+    "type": { "type": "string" },
+    "identity": { "$ref": "https://helios.zero/schemas/common/identity.schema.json#/properties/identity" },
+    "status": {
+      "type": "string",
+      "enum": ["confirmed", "candidate", "disputed", "retracted", "historical", "hypothetical"]
+    },
+    "measurements": {
+      "type": "object",
+      "properties": {
+        "parallax": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "position": { "type": "object" },
+        "proper_motion": { "type": "object" },
+        "mass": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "radius": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+        "photometry": { "type": "object" },
+        "effective_temperature": {
+          "type": "object",
+          "properties": { "value": { "type": "number" }, "unit": { "const": "K" } },
+          "required": ["value", "unit"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "derived": {
+      "type": "object",
+      "description": "Computed quantities. Each entry records the method used to derive it. Stored only when it cannot be meaningfully recomputed at runtime.",
+      "additionalProperties": true
+    },
+    "components": {
+      "type": "object",
+      "description": "Component-oriented behavior. The renderer inspects these, never identity.classification.",
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "https://helios.zero/schemas/components/orbit.schema.json" },
+          { "$ref": "https://helios.zero/schemas/components/light-source.schema.json" },
+          { "$ref": "https://helios.zero/schemas/components/atmosphere.schema.json" }
+        ]
+      }
+    },
+    "relationships": { "$ref": "https://helios.zero/schemas/common/identity.schema.json#/properties/relationships" },
+    "discovery": { "$ref": "https://helios.zero/schemas/common/identity.schema.json#/properties/discovery" },
+    "sources": { "$ref": "https://helios.zero/schemas/common/identity.schema.json#/properties/sources" },
+    "visual": { "type": "object" },
+    "variability": { "type": "object" },
+    "notes": {
+      "type": "object",
+      "description": "Human-readable notes. Never engine-critical.",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "required": ["schema_version", "id", "identity"],
+  "additionalProperties": false
+}

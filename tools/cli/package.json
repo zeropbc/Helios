@@ -1,0 +1,21 @@
+{
+  "name": "@helios/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "helios": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@helios/data": "workspace:*",
+    "@helios/schemas": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.5.0",
+    "typescript": "^5.5.0"
+  }
+}

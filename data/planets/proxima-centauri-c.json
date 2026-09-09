@@ -1,0 +1,48 @@
+{
+  "$schema": "https://helios.zero/schemas/domains/planet.schema.json",
+  "schema_version": "1.0",
+  "id": "planet/proxima-centauri-c",
+  "type": "planet",
+  "identity": {
+    "name": "Proxima Centauri c",
+    "designations": ["Proxima c"],
+    "classification": { "primary": "planet", "subtype": "gas_giant" }
+  },
+  "status": "candidate",
+  "relationships": { "parent": "star/proxima-centauri" },
+  "discovery": {
+    "date": "2019",
+    "discoverer": ["Mario Damasso"],
+    "method": "radial_velocity"
+  },
+  "measurements": {
+    "mass": {
+      "value": 7,
+      "unit": "M_earth",
+      "uncertainty": {
+        "plus": 7,
+        "minus": 0.5
+      },
+      "source": "kervella-2020"
+    }
+  },
+  "components": {
+    "orbit": {
+      "type": "orbit",
+      "orbit": {
+        "type": "keplerian",
+        "primary": "star/proxima-centauri",
+        "semi_major_axis": { "value": 1.489, "unit": "AU", "source": "kervella-2020" },
+        "eccentricity": 0,
+        "period": { "value": 1928, "unit": "day", "source": "kervella-2020" },
+        "argument_of_periapsis": { "value": 0, "unit": "deg", "source": "kervella-2020" }
+      }
+    }
+  },
+  "visual": {
+    "render": { "model": "sphere", "color": { "mode": "textured", "value": "pale_blue" }, "scale": { "mode": "physical" } }
+  },
+  "sources": {
+    "kervella-2020": { "type": "paper", "citation": "Kervella et al. (2020), A&A 635, L14", "doi": "10.1051/0004-6361/201937371", "accessed": "2026-09-09" }
+  }
+}

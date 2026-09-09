@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft-2020-12/schema",
+  "$id": "https://helios.zero/schemas/components/light-source.schema.json",
+  "title": "Light Source Component",
+  "description": "Renders an object as a light-emitting body. A star is simply an object with this component — the engine needs no special star knowledge.",
+  "type": "object",
+  "properties": {
+    "type": { "const": "light_source" },
+    "luminosity": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+    "effective_temperature": { "$ref": "https://helios.zero/schemas/common/measurement.schema.json" },
+    "spectrum": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["type", "luminosity", "effective_temperature"],
+  "additionalProperties": false
+}

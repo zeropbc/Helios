@@ -1,0 +1,19 @@
+{
+  "name": "helios",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Data-driven astronomical visualization engine",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @helios/app dev",
+    "build": "pnpm -r build",
+    "validate": "pnpm --filter @helios/cli validate",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

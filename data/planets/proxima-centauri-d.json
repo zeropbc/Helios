@@ -1,0 +1,40 @@
+{
+  "$schema": "https://helios.zero/schemas/domains/planet.schema.json",
+  "schema_version": "1.0",
+  "id": "planet/proxima-centauri-d",
+  "type": "planet",
+  "identity": {
+    "name": "Proxima Centauri d",
+    "designations": ["Proxima d"],
+    "classification": { "primary": "planet", "subtype": "terrestrial" }
+  },
+  "status": "candidate",
+  "relationships": { "parent": "star/proxima-centauri" },
+  "discovery": {
+    "date": "2022",
+    "discoverer": ["João Faria"],
+    "method": "radial_velocity"
+  },
+  "measurements": {
+    "mass": { "value": 0.26, "unit": "M_earth", "uncertainty": 0.05, "source": "faria-2022" }
+  },
+  "components": {
+    "orbit": {
+      "type": "orbit",
+      "orbit": {
+        "type": "keplerian",
+        "primary": "star/proxima-centauri",
+        "semi_major_axis": { "value": 0.0288, "unit": "AU", "source": "faria-2022" },
+        "eccentricity": 0.01,
+        "period": { "value": 5.122, "unit": "day", "source": "faria-2022" }
+      }
+    },
+    "terrain": { "type": "terrain", "type_classification": "terrestrial_rocky" }
+  },
+  "visual": {
+    "render": { "model": "sphere", "color": { "mode": "textured", "value": "gray" }, "scale": { "mode": "physical" } }
+  },
+  "sources": {
+    "faria-2022": { "type": "paper", "citation": "Faria et al. (2022), A&A 658, A115", "doi": "10.1051/0004-6361/202142337", "accessed": "2026-09-09" }
+  }
+}
