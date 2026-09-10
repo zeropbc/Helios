@@ -2,18 +2,11 @@ import * as THREE from "three";
 import { ObjectInstance } from "@helios/engine";
 import { describeRender } from "@helios/engine";
 import { temperatureToRGB } from "../systems/blackbody.js";
+import { createStarVisual } from "../systems/star-material.js";
 import { bodySceneTransform } from "../utils/scaling.js";
-
-/**
- * Builds a visual representation for a single object, driven ENTIRELY by
- * its components (via describeRender). The engine renders a light source
- * when a light_source component exists, a solid orb when terrain/ocean/
- * radius measurements exist, and so on. It never checks "is this Earth?".
- */
 
 export interface BuiltVisual {
   group: THREE.Group;
-  /** Scales world-unit position delta (1e9 m per unit) to scene units. */
   sceneScale: number;
 }
 
@@ -22,81 +15,63 @@ const SCENE_SCALE = 1e-9;
 export function buildObjectVisual(inst: ObjectInstance): THREE.Group {
   const group = new THREE.Group();
   group.userData.heliosId = inst.id;
-
   const desc = describeRender(inst);
 
   if (desc.kind === "light_point") {
     group.add(buildLight(desc));
     return group;
   }
-
   if (desc.kind === "solid") {
-    group.add(buildSolid(inst, desc));
+    group.add(buildSolid(group, desc, inst));
     const glow = buildAtmosphereGlow(inst);
     if (glow) group.add(glow);
     return group;
   }
-
-  // bare or system_root: nothing to draw, but children still attach.
   return group;
 }
 
-function buildLight(
-  desc: { temperatureK?: number; luminosityW?: number }
-): THREE.Group {
-  const g = new THREE.Group();
+function buildLight(desc: { temperatureK?: number; luminosityW?: number }): THREE.Group {
   const t = desc.temperatureK ?? 5772;
+  const lumW = desc.luminosityW ?? 3.828e26;
   const color = new THREE.Color().setRGB(...temperatureToRGB(t));
-
-  // Core sprite: additive-ish bloom via point sprite texture
-  const sizeFactor = 0.4 * Math.pow((desc.luminosityW ?? 1) / 1e26, 0.25);
-  const coreRadius = Math.max(0.06, sizeFactor);
-  const geo = new THREE.SphereGeometry(coreRadius, 16, 16);
-  const mat = new THREE.MeshBasicMaterial({
-    color,
-    transparent: true,
-    opacity: 0.95,
-  });
-  const mesh = new THREE.Mesh(geo, mat);
-  g.add(mesh);
-
-  // Soft halo
-  const haloGeo = new THREE.SphereGeometry(coreRadius * 3.2, 24, 24);
-  const haloMat = new THREE.MeshBasicMaterial({
-    color,
-    transparent: true,
-    opacity: 0.25,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-  });
-  g.add(new THREE.Mesh(haloGeo, haloMat));
-
-  return g;
+  const coreRadius = Math.max(0.06, 0.4 * Math.pow(lumW / 1e26, 0.25));
+  return createStarVisual(color, coreRadius);
 }
 
 function buildSolid(
-  inst: ObjectInstance,
-  desc: { radiusM?: number }
-): THREE.Group {
-  const g = new THREE.Group();
+  group: THREE.Group,
+  desc: { radiusM?: number },
+  inst: ObjectInstance
+): THREE.Mesh {
   const radiusM = desc.radiusM ?? 6.378e6;
-
-  // Scene-space sphere. Radius uses the log scale for visibility.
   const distanceRelevant = Math.max(radiusM, 1e9);
   const { radius } = bodySceneTransform(distanceRelevant, radiusM);
-  const geo = new THREE.SphereGeometry(radius, 24, 24);
+  const geo = new THREE.SphereGeometry(radius, 48, 48);
 
   const renderHint = inst.object.visual?.render;
   const colorValue = renderHint?.color?.value ?? "gray";
   const color = namedColor(colorValue);
 
+  // Procedural surface props — driven ONLY by component data
+  const terrainComp = inst.components.get("terrain") as { class?: string } | undefined;
+  const oceanComp = inst.components.get("ocean");
+  const atmoComp = inst.components.get("atmosphere");
+  const terrainClass = terrainComp?.class ?? "bare";
+  const roughness = oceanComp ? 0.04 : (terrainClass === "gas_giant" ? 0.55 : terrainClass === "rocky" ? 0.95 : 0.82);
+  const metalness = oceanComp ? 0.0 : (terrainClass === "metallic" ? 0.6 : 0.02);
+
   const mat = new THREE.MeshStandardMaterial({
     color,
-    roughness: 0.8,
-    metalness: 0.1,
+    roughness,
+    metalness,
+    emissive: atmoComp ? new THREE.Color(0x1a2a3a).multiplyScalar(0.12) : undefined,
+    emissiveIntensity: 0.35,
   });
-  g.add(new THREE.Mesh(geo, mat));
-  return g;
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  group.add(mesh);
+  return mesh;
 }
 
 function buildAtmosphereGlow(inst: ObjectInstance): THREE.Object3D | null {
@@ -110,22 +85,23 @@ function buildAtmosphereGlow(inst: ObjectInstance): THREE.Object3D | null {
   const mat = new THREE.MeshBasicMaterial({
     color: new THREE.Color(0x88ccff),
     transparent: true,
-    opacity: 0.15,
+    opacity: 0.18,
     depthWrite: false,
     side: THREE.BackSide,
   });
   return new THREE.Mesh(geo, mat);
 }
 
-function namedColor(name: string): THREE.Color {
+function namedColor(name?: string): THREE.Color {
   const palette: Record<string, [number, number, number]> = {
-    gray: [0.6, 0.6, 0.62],
-    rust: [0.72, 0.32, 0.2],
-    pale_gold: [0.92, 0.82, 0.62],
-    pale_blue: [0.62, 0.78, 0.95],
-    blue: [0.2, 0.4, 0.9],
+    gray: [0.62, 0.62, 0.64],
+    rust: [0.78, 0.35, 0.2],
+    pale_gold: [0.92, 0.84, 0.66],
+    pale_blue: [0.62, 0.78, 0.96],
+    blue: [0.2, 0.4, 0.92],
+    white: [0.98, 0.98, 0.98],
   };
-  const c = palette[name] ?? palette.gray!;
+  const c = palette[name ?? "gray"] ?? palette.gray!;
   return new THREE.Color(c[0], c[1], c[2]);
 }
 

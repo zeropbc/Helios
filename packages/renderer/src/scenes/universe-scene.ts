@@ -2,6 +2,37 @@ import * as THREE from "three";
 import { Universe, ObjectInstance, computeOrbitState } from "@helios/engine";
 import { buildObjectVisual, SCENE_SCALE } from "../components/object-visuals.js";
 import { buildOrbitLine } from "../components/orbit-lines.js";
+import { temperatureToRGB } from "../systems/blackbody.js";
+
+// Times 1 L_sun at 1 scene unit: tunes where decay-2 point lights land so a
+// planet at ~12.3 units (Earth) reaches a comfortable daylight irradiance.
+const STELLAR_INTENSITY = 160;
+
+function buildStarLights(universe: Universe, visuals: Map<string, SceneVisual>): void {
+  for (const inst of universe.all()) {
+    const ls = inst.components.get("light_source");
+    if (!ls || ls.type !== "light_source") continue;
+    const viz = visuals.get(inst.id);
+    if (!viz) continue;
+
+    const lumW = ls.luminosityW;
+    const tempK = ls.effectiveTemperatureK ?? 5772;
+    const color = new THREE.Color().setRGB(...temperatureToRGB(tempK));
+    const lumRatio = lumW / 3.828e26;
+
+    const light = new THREE.PointLight(color, STELLAR_INTENSITY * lumRatio, 0, 2);
+    // Shadows only for the dominant star of a system — planet terminator
+    // realism where scale actually resolves.
+    if (lumRatio > 0.5) {
+      light.castShadow = true;
+      light.shadow.mapSize.set(1024, 1024);
+      light.shadow.camera.near = 0.1;
+      light.shadow.camera.far = 220;
+      light.shadow.bias = -0.0002;
+    }
+    viz.group.add(light);
+  }
+}
 
 /**
  * UniverseScene mirrors the engine's universe graph as a Three.js scene.
@@ -53,6 +84,7 @@ export class UniverseScene {
     }
 
     this.buildOrbitLines();
+    buildStarLights(this.universe, this.visuals);
   }
 
   private buildOrbitLines(): void {

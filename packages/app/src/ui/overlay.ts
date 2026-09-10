@@ -87,6 +87,8 @@ export class HeliosUI {
   }
 
   showInfo(inst: ObjectInstance | null): void {
+    const panel = this.root.querySelector("#info-panel-wrapper")! as HTMLElement;
+    panel.style.display = inst ? "block" : "none";
     if (!inst) {
       this.infoEl.innerHTML = `<div id="info-empty">no object</div>`;
       return;
@@ -135,6 +137,11 @@ export class HeliosUI {
     for (const item of this.listEl.querySelectorAll<HTMLElement>(".obj-item")) {
       item.classList.toggle("active", item.dataset.id === id);
     }
+  }
+
+  setActiveInfoVisible(visible: boolean): void {
+    const p = this.root.querySelector("#info-panel-wrapper")! as HTMLElement;
+    p.style.display = visible ? "block" : "none";
   }
 
   /** Per-frame HUD update. simTimeS is the running simulation epoch in seconds. */
@@ -235,46 +242,31 @@ function shortId(id: string): string {
 
 function layout(): string {
   return `
-<header class="helios-header">
-  <div class="header-left">
-    <span class="helios-wordmark">Helios</span>
-    <span class="header-meta"><b id="obj-count">0</b> objects</span>
-  </div>
-  <div class="header-right">
-    <span class="header-meta">DATA-DRIVEN · <b>V1</b> · SPEC 1.0</span>
-  </div>
-</header>
+<div class="helios-chrome">
+  <section class="helios-panel" id="obj-list-panel">
+    <div class="panel-head">
+      <span class="eyebrow">Universe · <b id="obj-count">0</b></span>
+    </div>
+    <div id="obj-list"></div>
+  </section>
 
-<section class="helios-panel" id="obj-list-panel">
-  <div class="panel-head">
-    <span class="eyebrow">Universe</span>
-    <span class="eyebrow eyebrow-strong" id="obj-count-2"></span>
-  </div>
-  <div id="obj-list"></div>
-</section>
+  <aside class="helios-panel" id="info-panel-wrapper" style="display:none;">
+    <div id="info"></div>
+  </aside>
 
-<aside class="helios-panel" id="info-panel">
-  <div class="panel-head"><span class="eyebrow">Object</span></div>
-  <div id="info"></div>
-</aside>
-
-<footer class="helios-hud">
-  <div class="hud-group">
-    <div class="hud-clocks">
-      <span class="hud-clock-label">Sim</span>
+  <footer class="helios-hud">
+    <div class="hud-group">
+      <span class="hud-clock-label">Sim · UTC</span>
       <span class="hud-clock" id="clock-sim">2000-01-01</span>
       <span class="hud-clock" id="clock-day">12:00:00Z</span>
     </div>
-  </div>
-  <div class="hud-group" id="hud-rate">
-    <span class="eyebrow">Rate</span>
-    <input id="rate" type="range" min="0" max="1000" step="1" value="500"/>
-    <span id="rate-label">1.0×</span>
-    <button class="hud-btn" id="pause-btn">Pause</button>
-  </div>
-  <div class="hud-group">
-    <span class="hud-hints">Left-drag orbit · wheel zoom · right-drag pan</span>
-  </div>
-</footer>
+    <div class="hud-group" id="hud-rate">
+      <span class="eyebrow">Rate</span>
+      <input id="rate" type="range" min="0" max="1000" step="1" value="500"/>
+      <span id="rate-label">1.0×</span>
+      <button class="hud-btn" id="pause-btn">Pause</button>
+    </div>
+  </footer>
+</div>
 `;
 }

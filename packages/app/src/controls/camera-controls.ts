@@ -142,6 +142,14 @@ export class OrbitCamera {
     }
   }
 
+  getTarget(): THREE.Vector3 {
+    return this.target;
+  }
+
+  getDistance(): number {
+    return this.distance;
+  }
+
   flyTo(position: THREE.Vector3, distance?: number, durationMs = 1100): void {
     this.cancelFly();
     this.fly = {

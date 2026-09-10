@@ -41,6 +41,10 @@ async function main(): Promise<void> {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.25;
   container.appendChild(renderer.domElement);
 
   const camera = new THREE.PerspectiveCamera(
@@ -57,11 +61,10 @@ async function main(): Promise<void> {
     maxDistance: 400,
   });
 
-  sceneViz.scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+  // Faint infinitely-far fill so night sides keep a traceable silhouette;
+  // the real light comes from each star's PointLight (built in UniverseScene).
+  sceneViz.scene.add(new THREE.AmbientLight(0xffffff, 0.04));
   const sun = sceneViz.get("star/sol");
-  if (sun) {
-    sun.group.add(new THREE.PointLight(0xfff0d0, 3, 0, 2));
-  }
 
   // ---- UI -----------------------------------------------------------------
   const ui = new HeliosUI(container, {
@@ -111,9 +114,18 @@ async function main(): Promise<void> {
 
   // Debug access
   (window as unknown as Record<string, unknown>).helios = {
+    THREEModule: THREE,
+    renderer,
+    camera,
+    controls,
     universe,
     sceneViz,
     simTime: () => simTime,
+    cameraInfo: () => ({
+      pos: camera.position.toArray(),
+      target: controls.getTarget().toArray(),
+      dist: controls.getDistance(),
+    }),
   };
 }
 
