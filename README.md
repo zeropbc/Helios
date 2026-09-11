@@ -45,6 +45,12 @@ The server accepts `HOST` and `PORT`:
 HOST=0.0.0.0 PORT=8080 ./server.sh
 ```
 
+You can also pass the port explicitly:
+
+```sh
+./server.sh --port 6969
+```
+
 Opening `index.html` directly with a `file://` URL is not supported by
 browser module and fetch security rules.
 
