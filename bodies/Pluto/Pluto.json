@@ -1,1 +1,1 @@
-{"name":"Pluto","render":{"radius":0.42,"color":11184810},"orbit":{"semi_major_axis_au":39.482,"eccentricity":0.2488,"inclination_deg":17.14,"longitude_ascending_node_deg":110.3,"longitude_periapsis_deg":224.1,"mean_longitude_deg":238.9}}
+{"name":"Pluto","radius_km":1188.3,"render":{"color":11184810},"orbit":{"semi_major_axis_au":39.482,"eccentricity":0.2488,"inclination_deg":17.14,"longitude_ascending_node_deg":110.3,"longitude_periapsis_deg":224.1,"mean_longitude_deg":238.9}}

@@ -1,4 +1,4 @@
-import { createApp } from "./core/app.js";
+import { createApp } from "./core/app.js?v=dom-labels";
 
 const container = document.getElementById("app");
 createApp(container ?? document.body).catch((error) => {

@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 export function createSaturnRings(config) {
   const rings = new THREE.Mesh(
-    new THREE.RingGeometry(config.render.radius * 1.4, config.render.radius * 2.4, 64),
+    new THREE.RingGeometry(1.45, 2.3, 128),
     new THREE.MeshStandardMaterial({
       color: 0xc8b070,
       side: THREE.DoubleSide,

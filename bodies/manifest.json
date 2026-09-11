@@ -10,5 +10,6 @@
   "Uranus/Uranus.json",
   "Neptune/Neptune.json",
   "Pluto/Pluto.json",
-  "moons.json"
+  "moons.json",
+  "outer-system.json"
 ]

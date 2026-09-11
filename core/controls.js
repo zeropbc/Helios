@@ -1,5 +1,5 @@
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { CAMERA } from "../config/camera.js";
+import { CAMERA } from "../config/camera.js?v=zoom-labels";
 
 export function createControls(camera, domElement) {
   const controls = new OrbitControls(camera, domElement);

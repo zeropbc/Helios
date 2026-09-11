@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { CAMERA } from "../config/camera.js";
+import { CAMERA } from "../config/camera.js?v=zoom-labels";
 
 export function createCamera() {
   const aspect = window.innerWidth / window.innerHeight;
