@@ -1,4 +1,4 @@
-const MANIFEST_URL = "/bodies/manifest.json";
+const MANIFEST_URL = new URL("../bodies/manifest.json", import.meta.url);
 const KNOWN_RADII_KM = {
   Moon: 1737.4, Phobos: 11.27, Deimos: 6.2,
   Io: 1821.6, Europa: 1560.8, Ganymede: 2634.1, Callisto: 2410.3,
@@ -59,7 +59,7 @@ function normalizeBody(body, path) {
 }
 
 export async function loadBodies() {
-  const manifestResponse = await fetch(`${MANIFEST_URL}?v=physical`, { cache: "no-store" });
+  const manifestResponse = await fetch(MANIFEST_URL, { cache: "no-store" });
   if (!manifestResponse.ok) {
     throw new Error(`Unable to load body manifest (${manifestResponse.status})`);
   }
@@ -68,7 +68,7 @@ export async function loadBodies() {
     throw new Error("Body manifest must be an array of JSON paths");
   }
   const loaded = await Promise.all(paths.map(async (path) => {
-    const response = await fetch(`/bodies/${path}?v=physical`, { cache: "no-store" });
+    const response = await fetch(new URL(`../bodies/${path}`, import.meta.url), { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Unable to load body data ${path} (${response.status})`);
     }
