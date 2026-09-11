@@ -11,6 +11,9 @@ import { createSunLight, createAmbientLight } from "../bodies/sun/lights.js";
 import { buildSolarSystem } from "../system/solar-system.js";
 import { loadBodies } from "../system/body-data.js";
 import { TIME } from "../config/time.js";
+import { loadMpcBodies } from "../system/mpc-catalog.js";
+import { createMinorBodyMesh } from "../system/minor-body-mesh.js";
+import { MPC_CATALOG } from "../config/catalog.js";
 
 export async function createApp(container) {
   const bodies = await loadBodies();
@@ -37,12 +40,22 @@ export async function createApp(container) {
 
   // planets + orbits
   const system = buildSolarSystem(scene, bodies);
+  const settings = createSettings(system);
+  let minorBodyMesh = null;
+  if (MPC_CATALOG.enabled) {
+    const mpcBodies = await loadMpcBodies();
+    minorBodyMesh = createMinorBodyMesh(mpcBodies);
+    scene.add(minorBodyMesh);
+  }
   let simDate = Date.now();
 
   const loop = createLoop((dt) => {
     simDate += dt * TIME.rate * 1000;
     controls.update(dt);
-    system.update(new Date(simDate));
+    const date = new Date(simDate);
+    system.update(date);
+    system.updateLabelVisibility(camera, settings.checkbox.checked);
+    minorBodyMesh?.userData.update(new Date(simDate));
 
     // sun rotates slowly; static HDR stays put
     sun.rotation.y += dt * 0.02;
@@ -52,7 +65,30 @@ export async function createApp(container) {
 
   createResizeHandler(renderer, camera, composer);
 
-  window.helios = { scene, camera, renderer, controls, sun, system, bloomPass };
+  window.helios = { scene, camera, renderer, controls, sun, system, bloomPass, minorBodyMesh, settings };
 
   loop.start();
+}
+
+function createSettings(system) {
+  const button = document.createElement("button");
+  button.className = "settings-button";
+  button.type = "button";
+  button.setAttribute("aria-label", "Open settings");
+  button.textContent = "⚙";
+
+  const panel = document.createElement("aside");
+  panel.className = "settings-panel";
+  panel.innerHTML = `
+    <h2>Settings</h2>
+    <label><input type="checkbox" checked> Show labels</label>
+  `;
+  const checkbox = panel.querySelector("input");
+  checkbox.addEventListener("change", () => system.setLabelsVisible(checkbox.checked));
+  button.addEventListener("click", () => {
+    panel.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", panel.classList.contains("is-open"));
+  });
+  document.body.append(button, panel);
+  return { button, panel, checkbox };
 }

@@ -8,5 +8,7 @@
   "Jupiter/Jupiter.json",
   "Saturn/Saturn.json",
   "Uranus/Uranus.json",
-  "Neptune/Neptune.json"
+  "Neptune/Neptune.json",
+  "Pluto/Pluto.json",
+  "moons.json"
 ]

@@ -5,7 +5,7 @@ export const CAMERA = {
   startPosition: [0, 80, 180],
   startTarget: [0, 0, 0],
   minDistance: 0.1,
-  maxDistance: 100000,
+  maxDistance: 10000,
   zoomFactor: 0.0018,
   dampingFactor: 0.08,
   panSpeed: 0.8,

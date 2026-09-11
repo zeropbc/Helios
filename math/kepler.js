@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { AU, TAU } from "../config/constants.js";
+import { TAU } from "../config/constants.js";
+import { astronomicalUnitsToSceneUnits } from "../config/units.js";
 
 const DEG = Math.PI / 180;
 const CENTURY_DAYS = 36525;
@@ -29,20 +30,34 @@ function solveKepler(meanAnomaly, eccentricity) {
 export function positionFromElements(elements, date = new Date()) {
   const t = centuriesSinceJ2000(date);
   const value = (key) => elements[key] + (elements.rates?.[key] ?? 0) * t;
-  const a = value("semi_major_axis_au");
+  const a = elements.perihelion_distance_au
+    ? elements.perihelion_distance_au / (1 - elements.eccentricity)
+    : value("semi_major_axis_au");
   const e = value("eccentricity");
   const inclination = value("inclination_deg") * DEG;
   const node = value("longitude_ascending_node_deg") * DEG;
-  const longitude = value("mean_longitude_deg") * DEG;
   const periapsis = value("longitude_periapsis_deg") * DEG;
-  const meanAnomaly = THREE.MathUtils.euclideanModulo(longitude - periapsis, TAU);
+  let meanAnomaly;
+  if (elements.perihelion_jd !== undefined) {
+    const gaussianConstant = 0.01720209895;
+    meanAnomaly = gaussianConstant * (julianDate(date) - elements.perihelion_jd) /
+      Math.pow(a, 1.5);
+  } else if (elements.epoch_jd !== undefined) {
+    const elapsedDays = julianDate(date) - elements.epoch_jd;
+    meanAnomaly = (elements.mean_anomaly_deg * DEG) +
+      (elements.mean_motion_deg_per_day * DEG * elapsedDays);
+  } else {
+    const longitude = value("mean_longitude_deg") * DEG;
+    meanAnomaly = longitude - periapsis;
+  }
+  meanAnomaly = THREE.MathUtils.euclideanModulo(meanAnomaly, TAU);
   const eccentricAnomaly = solveKepler(meanAnomaly, e);
   const trueAnomaly = 2 * Math.atan2(
     Math.sqrt(1 + e) * Math.sin(eccentricAnomaly / 2),
     Math.sqrt(1 - e) * Math.cos(eccentricAnomaly / 2)
   );
   const radius = a * (1 - e * Math.cos(eccentricAnomaly));
-  const argumentOfPeriapsis = periapsis * DEG - node;
+  const argumentOfPeriapsis = periapsis - node;
   const orbitalPosition = new THREE.Vector3(
     radius * Math.cos(trueAnomaly),
     0,
@@ -54,10 +69,10 @@ export function positionFromElements(elements, date = new Date()) {
   orbitalPosition.applyAxisAngle(new THREE.Vector3(0, 1, 0), -node);
 
   return {
-    x: orbitalPosition.x * AU,
-    y: orbitalPosition.z * AU,
-    z: orbitalPosition.y * AU,
-    r: radius * AU,
+    x: astronomicalUnitsToSceneUnits(orbitalPosition.x),
+    y: astronomicalUnitsToSceneUnits(orbitalPosition.y),
+    z: astronomicalUnitsToSceneUnits(orbitalPosition.z),
+    r: astronomicalUnitsToSceneUnits(radius),
   };
 }
 

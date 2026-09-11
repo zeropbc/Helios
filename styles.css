@@ -2,3 +2,20 @@
 html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: system-ui, sans-serif; }
 #app { width: 100%; height: 100%; }
 #app canvas { display: block; }
+.settings-button {
+  position: fixed; top: 20px; right: 20px; z-index: 10;
+  width: 46px; height: 46px; border: 0; border-radius: 50%;
+  background: rgba(20, 28, 40, 0.9); color: #fff; font-size: 23px;
+  cursor: pointer; box-shadow: 0 5px 24px rgba(0, 0, 0, 0.4);
+}
+.settings-button:hover { background: rgba(45, 60, 82, 0.95); }
+.settings-panel {
+  position: fixed; top: 76px; right: 20px; z-index: 9;
+  min-width: 190px; padding: 16px; border: 1px solid #34465c;
+  border-radius: 12px; background: rgba(10, 16, 24, 0.94);
+  color: #eef4ff; opacity: 0; pointer-events: none;
+  transform: translateY(-8px); transition: opacity 160ms, transform 160ms;
+}
+.settings-panel.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.settings-panel h2 { margin-bottom: 12px; font-size: 15px; }
+.settings-panel label { display: flex; gap: 8px; align-items: center; font-size: 13px; }

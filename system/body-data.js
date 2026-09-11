@@ -45,12 +45,15 @@ export async function loadBodies() {
   if (!Array.isArray(paths)) {
     throw new Error("Body manifest must be an array of JSON paths");
   }
-  const bodies = await Promise.all(paths.map(async (path) => {
+  const loaded = await Promise.all(paths.map(async (path) => {
     const response = await fetch(`/bodies/${path}`);
     if (!response.ok) {
       throw new Error(`Unable to load body data ${path} (${response.status})`);
     }
-    return normalizeBody(await response.json(), path);
+    const data = await response.json();
+    return Array.isArray(data)
+      ? data.map((body, index) => normalizeBody(body, `${path}[${index}]`))
+      : normalizeBody(data, path);
   }));
-  return bodies;
+  return loaded.flat();
 }
