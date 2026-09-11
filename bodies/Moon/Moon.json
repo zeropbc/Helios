@@ -1,0 +1,1 @@
+{"name":"Moon","parent":"Earth","render":{"radius":0.27,"color":10066329},"orbit":{"semi_major_axis_au":0.00256956,"eccentricity":0.0549,"inclination_deg":5.145,"longitude_ascending_node_deg":125.08,"longitude_periapsis_deg":318.15,"mean_longitude_deg":218.316,"rates":{"mean_longitude_deg":481267.881}}}

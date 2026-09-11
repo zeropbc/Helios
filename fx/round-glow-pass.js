@@ -36,8 +36,8 @@ const thresholdShader = {
     void main() {
       vec3 c = texture2D(tDiffuse, vUv).rgb;
       float w = max(max(c.r, c.g), c.b);
-      float k = smoothstep(threshold - 0.05, threshold + 0.05, w);
-      gl_FragColor = vec4(c * k, 1.0);
+      float bloom = smoothstep(threshold * 0.65, threshold * 2.2, w);
+      gl_FragColor = vec4(c * bloom, 1.0);
     }`,
 };
 
@@ -80,10 +80,19 @@ const compositeShader = {
     uniform sampler2D tBloom;
     uniform float strength;
     varying vec2 vUv;
+    vec3 ACESFilm(vec3 x) {
+      float a = 2.51;
+      float b = 0.03;
+      float c = 2.43;
+      float d = 0.59;
+      float e = 0.14;
+      return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
+    }
     void main() {
       vec3 scene = texture2D(tScene, vUv).rgb;
       vec3 bloom = texture2D(tBloom, vUv).rgb;
-      gl_FragColor = vec4(scene + bloom * strength, 1.0);
+      vec3 color = scene + bloom * strength;
+      gl_FragColor = vec4(ACESFilm(color), 1.0);
     }`,
 };
 
@@ -107,6 +116,7 @@ export class RoundGlowPass extends Pass {
       t.texture.generateMipmaps = false;
     });
     this.applyParams();
+    this.setSize(width, height);
   }
 
   applyParams() {

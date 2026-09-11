@@ -1,9 +1,9 @@
 import * as THREE from "three";
 
 export function createPlanetMesh(config) {
-  const geo = new THREE.SphereGeometry(config.r, 32, 32);
+  const geo = new THREE.SphereGeometry(config.render.radius, 64, 64);
   const material = new THREE.MeshStandardMaterial({
-    color: config.color,
+    color: config.render.color,
     roughness: 0.8,
     metalness: 0.1,
   });

@@ -1,0 +1,9 @@
+{
+  "name": "Sun",
+  "aliases": ["Sol"],
+  "classification": {"spectral_type": "G2V", "star_type": "Yellow dwarf"},
+  "mass": {"value": 1.988475e30, "unit": "kg"},
+  "radius": {"equatorial": {"value": 695500, "unit": "km"}},
+  "effective_temperature": {"value": 5772, "unit": "K"},
+  "render": {"radius": 5, "color": 16776960}
+}

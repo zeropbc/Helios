@@ -1,21 +1,80 @@
-/**
- * Position along a Keplerian orbit.
- * @param {number} a semi-major axis
- * @param {number} e  eccentricity (0..1)
- * @param {number} nu true anomaly (radians)
- * @returns {{x: number, z: number, r: number}}
- */
-export function positionOnOrbit(a, e, nu) {
-  const r = (a * (1 - e * e)) / (1 + e * Math.cos(nu));
-  return { x: r * Math.cos(nu), z: r * Math.sin(nu), r };
+import * as THREE from "three";
+import { AU, TAU } from "../config/constants.js";
+
+const DEG = Math.PI / 180;
+const CENTURY_DAYS = 36525;
+
+export function julianDate(date = new Date()) {
+  return date.getTime() / 86400000 + 2440587.5;
 }
 
-/** Semi-minor axis for an ellipse of given semi-major axis and eccentricity. */
+export function centuriesSinceJ2000(date = new Date()) {
+  return (julianDate(date) - 2451545.0) / CENTURY_DAYS;
+}
+
+function solveKepler(meanAnomaly, eccentricity) {
+  let eccentricAnomaly = meanAnomaly;
+  for (let i = 0; i < 6; i += 1) {
+    eccentricAnomaly -=
+      (eccentricAnomaly - eccentricity * Math.sin(eccentricAnomaly) - meanAnomaly) /
+      (1 - eccentricity * Math.cos(eccentricAnomaly));
+  }
+  return eccentricAnomaly;
+}
+
+/**
+ * Converts J2000 ecliptic orbital elements to Three.js coordinates.
+ * Angles are in degrees in JSON and positions are scene units (AU * AU).
+ */
+export function positionFromElements(elements, date = new Date()) {
+  const t = centuriesSinceJ2000(date);
+  const value = (key) => elements[key] + (elements.rates?.[key] ?? 0) * t;
+  const a = value("semi_major_axis_au");
+  const e = value("eccentricity");
+  const inclination = value("inclination_deg") * DEG;
+  const node = value("longitude_ascending_node_deg") * DEG;
+  const longitude = value("mean_longitude_deg") * DEG;
+  const periapsis = value("longitude_periapsis_deg") * DEG;
+  const meanAnomaly = THREE.MathUtils.euclideanModulo(longitude - periapsis, TAU);
+  const eccentricAnomaly = solveKepler(meanAnomaly, e);
+  const trueAnomaly = 2 * Math.atan2(
+    Math.sqrt(1 + e) * Math.sin(eccentricAnomaly / 2),
+    Math.sqrt(1 - e) * Math.cos(eccentricAnomaly / 2)
+  );
+  const radius = a * (1 - e * Math.cos(eccentricAnomaly));
+  const argumentOfPeriapsis = periapsis * DEG - node;
+  const orbitalPosition = new THREE.Vector3(
+    radius * Math.cos(trueAnomaly),
+    0,
+    radius * Math.sin(trueAnomaly)
+  );
+
+  orbitalPosition.applyAxisAngle(new THREE.Vector3(0, 1, 0), -argumentOfPeriapsis);
+  orbitalPosition.applyAxisAngle(new THREE.Vector3(1, 0, 0), inclination);
+  orbitalPosition.applyAxisAngle(new THREE.Vector3(0, 1, 0), -node);
+
+  return {
+    x: orbitalPosition.x * AU,
+    y: orbitalPosition.z * AU,
+    z: orbitalPosition.y * AU,
+    r: radius * AU,
+  };
+}
+
 export function semiMinor(a, e) {
   return a * Math.sqrt(1 - e * e);
 }
 
-/** Distance from ellipse center to focus (linear eccentricity). */
-export function focal(a, e) {
-  return a * e;
+export function orbitPoints(config, segments = 256) {
+  const points = [];
+  const baseOrbit = { ...config.orbit, rates: undefined };
+  for (let i = 0; i <= segments; i += 1) {
+    const orbit = {
+      ...baseOrbit,
+      mean_longitude_deg: baseOrbit.mean_longitude_deg + (i / segments) * 360,
+    };
+    const position = positionFromElements(orbit, new Date(Date.UTC(2000, 0, 1, 12)));
+    points.push(new THREE.Vector3(position.x, position.y, position.z));
+  }
+  return points;
 }

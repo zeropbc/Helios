@@ -1,51 +1,48 @@
-import { PLANET_CONFIGS } from "./planet-data.js";
 import { createPlanetMesh } from "./planet-mesh.js";
 import { createOrbitLine } from "./orbit-line.js";
 import { createOrbiter } from "./orbiter.js";
-import { createMoon } from "./moon.js";
 import { createSaturnRings } from "./saturn-rings.js";
 
-/**
- * Builds the full planetary system: meshes, orbit lines, moons, rings.
- * Returns an object with scene refs and an update(dt) step.
- */
-export function buildSolarSystem(scene, sun) {
-  const planets = [];
+export function buildSolarSystem(scene, bodies) {
+  const bodyByName = new Map(bodies.map((body) => [body.name, body]));
+  const objects = new Map();
   const orbitLines = [];
 
-  for (const config of PLANET_CONFIGS) {
+  for (const config of bodies) {
+    if (!config.orbit) continue;
     const mesh = createPlanetMesh(config);
     const orbit = createOrbiter(config);
-    const line = createOrbitLine(config);
-
-    scene.add(line);
     scene.add(mesh);
+    objects.set(config.name, { mesh, orbit, config });
 
-    if (config.name === "Saturn") {
-      const rings = createSaturnRings(config);
-      mesh.add(rings);
+    if (!config.parent) {
+      const line = createOrbitLine(config);
+      scene.add(line);
+      orbitLines.push(line);
     }
-
-    if (config.name === "Earth") {
-      const moon = createMoon(config);
-      mesh.add(moon.mesh);
-      planets.push({ mesh, orbit, moon, config });
-    } else {
-      planets.push({ mesh, orbit, config });
-    }
-    orbitLines.push(line);
+    if (config.name === "Saturn") mesh.add(createSaturnRings(config));
   }
 
   return {
-    planets,
+    planets: [...objects.values()],
     orbitLines,
-    update(dt) {
-      for (const p of planets) {
-        p.orbit.step(dt);
-        const pos = p.orbit.getPosition();
-        p.mesh.position.set(pos.x, 0, pos.z);
-        if (p.moon) p.moon.update(dt);
+    update(date = new Date()) {
+      for (const body of objects.values()) {
+        const position = body.orbit.getPosition(date);
+        const parent = body.config.parent && objects.get(body.config.parent);
+        if (parent) {
+          body.mesh.position.set(
+            parent.mesh.position.x + position.x,
+            parent.mesh.position.y + position.y,
+            parent.mesh.position.z + position.z
+          );
+        } else {
+          body.mesh.position.set(position.x, position.y, position.z);
+        }
       }
+    },
+    getBody(name) {
+      return bodyByName.get(name);
     },
   };
 }
