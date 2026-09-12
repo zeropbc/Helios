@@ -8,8 +8,8 @@ import { createResizeHandler } from "./resize.js";
 import { createComposer } from "../fx/composer.js";
 import { createSun } from "../bodies/sun/sun.js";
 import { createSunLight, createAmbientLight } from "../bodies/sun/lights.js";
-import { buildSolarSystem } from "../system/solar-system.js?v=dom-labels";
-import { loadBodies } from "../system/body-data.js";
+import { buildSolarSystem } from "../system/solar-system.js?v=moon-orbits";
+import { loadBodies } from "../system/body-data.js?v=lod-saturn-5";
 import { TIME } from "../config/time.js";
 import { loadMpcBodies } from "../system/mpc-catalog.js";
 import { createMinorBodyMesh } from "../system/minor-body-mesh.js";
@@ -49,12 +49,12 @@ export async function createApp(container) {
     scene.add(minorBodyMesh);
   }
   let simDate = Date.now();
-
   const loop = createLoop((dt) => {
     simDate += dt * TIME.rate * 1000;
     controls.update(dt);
     const date = new Date(simDate);
     system.update(date);
+    system.updateLevelOfDetail(camera);
     system.updateLabelVisibility(camera, settings.checkbox.checked);
     minorBodyMesh?.userData.update(new Date(simDate));
 
@@ -65,6 +65,22 @@ export async function createApp(container) {
   });
 
   createResizeHandler(renderer, camera, composer);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTarget = urlParams.get("target") || urlParams.get("focus");
+  if (initialTarget) {
+    const object = system.planets.find((entry) => entry.config.name.toLowerCase() === initialTarget.toLowerCase());
+    if (object) {
+      controls.target.copy(object.mesh.position);
+      const distance = Math.max(object.mesh.scale.x * 12, 0.00001);
+      camera.position.set(
+        object.mesh.position.x + distance,
+        object.mesh.position.y + distance * 0.6,
+        object.mesh.position.z + distance
+      );
+      controls.update();
+    }
+  }
 
   window.helios = { scene, camera, renderer, controls, sun, system, bloomPass, minorBodyMesh, settings, search };
 

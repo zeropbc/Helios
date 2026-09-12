@@ -2,7 +2,10 @@ import * as THREE from "three";
 import { RENDERER } from "../config/renderer.js";
 
 export function createRenderer(container) {
-  const renderer = new THREE.WebGLRenderer({ antialias: RENDERER.antialias });
+  const renderer = new THREE.WebGLRenderer({
+    antialias: RENDERER.antialias,
+    logarithmicDepthBuffer: RENDERER.logarithmicDepthBuffer ?? true,
+  });
   const pixelRatio = Math.min(
     Math.max(window.devicePixelRatio || 1, RENDERER.minPixelRatio),
     RENDERER.maxPixelRatio

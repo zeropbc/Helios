@@ -1,11 +1,20 @@
 const MANIFEST_URL = new URL("../bodies/manifest.json", import.meta.url);
+const SATURN_MOON_SOURCES = [
+  "../db/Moons_of_Saturn_1.csv",
+  "../db/Moons_of_Saturn_2.csv",
+  "../db/Moons_of_Saturn_3.csv",
+  "../db/Moons_of_Saturn_4.csv",
+];
 const KNOWN_RADII_KM = {
   Moon: 1737.4, Phobos: 11.27, Deimos: 6.2,
   Io: 1821.6, Europa: 1560.8, Ganymede: 2634.1, Callisto: 2410.3,
   Amalthea: 83.5, Metis: 21.5, Thebe: 49.3, Himalia: 69.8, Elara: 43,
   Mimas: 198.2, Enceladus: 252.1, Tethys: 531.1, Dione: 561.4,
   Rhea: 763.8, Titan: 2574.7, Iapetus: 734.5, Janus: 89.5,
-  Epimetheus: 58.1, Phoebe: 106.5, Miranda: 235.8, Ariel: 578.9,
+  Epimetheus: 58.1, Phoebe: 106.5, Atlas: 15.5, Prometheus: 43.1,
+  Pandora: 40.7, Pan: 14.1, Daphnis: 4.9, Aegaeon: 0.3,
+  Methone: 1.6, Anthe: 1.0, Pallene: 2.5, Telesto: 12.4,
+  Helene: 17.6, Miranda: 235.8, Ariel: 578.9,
   Umbriel: 584.7, Titania: 788.9, Oberon: 761.4, Puck: 81,
   Triton: 1353.4, Nereid: 170, Proteus: 210, Charon: 606,
   Nix: 23, Hydra: 30.5, Eris: 1163, Haumea: 816, Makemake: 715,
@@ -30,7 +39,7 @@ function normalizeBody(body, path) {
     body.radius_km ??
     KNOWN_RADII_KM[body.name];
   const orbit = body.orbit;
-  if (orbit) {
+  if (orbit && orbit.epoch_jd === undefined) {
     for (const key of [
       "semi_major_axis_au",
       "eccentricity",
@@ -58,6 +67,85 @@ function normalizeBody(body, path) {
   };
 }
 
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let quoted = false;
+  for (let i = 0; i < text.length; i += 1) {
+    const char = text[i];
+    if (char === "\"") {
+      if (quoted && text[i + 1] === "\"") {
+        field += "\"";
+        i += 1;
+      } else {
+        quoted = !quoted;
+      }
+    } else if (char === "," && !quoted) {
+      row.push(field.trim());
+      field = "";
+    } else if ((char === "\n" || char === "\r") && !quoted) {
+      if (char === "\r" && text[i + 1] === "\n") i += 1;
+      row.push(field.trim());
+      if (row.some(Boolean)) rows.push(row);
+      row = [];
+      field = "";
+    } else {
+      field += char;
+    }
+  }
+  if (field || row.length) {
+    row.push(field.trim());
+    rows.push(row);
+  }
+  return rows;
+}
+
+function numberFrom(value) {
+  const match = value?.replaceAll(",", "").match(/[-+]?\d+(?:\.\d+)?/);
+  return match ? Number(match[0]) : null;
+}
+
+function parseSaturnMoonRows(text, source) {
+  const rows = parseCsv(text);
+  const isDetailed = source.endsWith("_3.csv");
+  return rows.slice(1).flatMap((row) => {
+    const name = (isDetailed ? row[1] : row[0])?.replace(/^[♠♦♣‡]/, "").trim();
+    if (!name || name.startsWith("S/2004 S 3") || name.includes("Ring moonlets")) return [];
+    const diameter = numberFrom(isDetailed ? row[5] : row[1]);
+    const semiMajorAxisKm = numberFrom(isDetailed ? row[7] : row[3]);
+    const periodDays = numberFrom(isDetailed ? row[8] : row[4]);
+    const inclination = numberFrom(isDetailed ? row[9] : "0") ?? 0;
+    const eccentricity = numberFrom(isDetailed ? row[10] : "0") ?? 0;
+    if (!semiMajorAxisKm || !periodDays) return [];
+    return [normalizeBody({
+      name,
+      parent: "Saturn",
+      radius_km: diameter ? diameter / 2 : 1,
+      classification: "Saturnian moon",
+      render: { color: 0xb6b1a7 },
+      orbit: {
+        semi_major_axis_au: semiMajorAxisKm / 149597870.7,
+        eccentricity,
+        inclination_deg: inclination,
+        longitude_ascending_node_deg: 0,
+        longitude_periapsis_deg: 0,
+        mean_longitude_deg: 0,
+        rates: { mean_longitude_deg: 360 * 36525 / periodDays },
+      },
+    }, `${source}:${name}`)];
+  });
+}
+
+async function loadSaturnMoons() {
+  const records = await Promise.all(SATURN_MOON_SOURCES.map(async (path) => {
+    const response = await fetch(new URL(path, import.meta.url));
+    if (!response.ok) throw new Error(`Unable to load moon data ${path} (${response.status})`);
+    return parseSaturnMoonRows(await response.text(), path);
+  }));
+  return records.flat();
+}
+
 export async function loadBodies() {
   const manifestResponse = await fetch(MANIFEST_URL, { cache: "no-store" });
   if (!manifestResponse.ok) {
@@ -77,5 +165,8 @@ export async function loadBodies() {
       ? data.map((body, index) => normalizeBody(body, `${path}[${index}]`))
       : normalizeBody(data, path);
   }));
-  return loaded.flat();
+  const bodies = loaded.flat();
+  const knownNames = new Set(bodies.map((body) => body.name));
+  const saturnMoons = await loadSaturnMoons();
+  return [...bodies, ...saturnMoons.filter((body) => !knownNames.has(body.name))];
 }

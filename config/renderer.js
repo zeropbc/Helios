@@ -1,5 +1,6 @@
 export const RENDERER = {
   antialias: true,
+  logarithmicDepthBuffer: true,
   minPixelRatio: 1,
   maxPixelRatio: 1.5,
   clearColor: 0x000000,
