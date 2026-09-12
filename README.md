@@ -1,5 +1,7 @@
 # Helios
 
+> Standalone site: <https://zeropbc.github.io/Helios/> (classic Pages, deploys on push to `main`).
+
 Helios is a browser-based scientific solar-system visualizer built around
 real-time J2000 orbital mechanics, physical body dimensions, and
 data-driven astronomy records. It is intentionally a no-build, no-Node
