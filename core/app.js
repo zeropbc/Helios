@@ -69,7 +69,13 @@ export async function createApp(container) {
   const urlParams = new URLSearchParams(window.location.search);
   const initialTarget = urlParams.get("target") || urlParams.get("focus");
   if (initialTarget) {
-    const object = system.planets.find((entry) => entry.config.name.toLowerCase() === initialTarget.toLowerCase());
+    // Match stable slugs (s-2007-s-7), provisional designations (S/2007 S 7),
+    // or plain names (Titan) — HeliosDB links use slugs.
+    const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    const key = slug(initialTarget);
+    const object = system.planets.find((entry) =>
+      slug(entry.config.name) === key ||
+      (typeof entry.config.id === "string" && slug(entry.config.id) === key));
     if (object) {
       controls.target.copy(object.mesh.position);
       const distance = Math.max(object.mesh.scale.x * 12, 0.00001);

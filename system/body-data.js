@@ -53,7 +53,7 @@ function normalizeBody(body, path) {
   }
   return {
     ...body,
-    id: body.id ?? body.name.toLowerCase().replaceAll(" ", "-"),
+    id: body.id ?? body.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
     render: {
       radius: requiredNumber(
         physicalRadiusKm
@@ -146,6 +146,66 @@ async function loadSaturnMoons() {
   return records.flat();
 }
 
+const CANONICAL_BASE =
+  (typeof location !== "undefined" ? new URLSearchParams(location.search).get("heliosdb") : null) ||
+  "https://zeropbc.github.io/HeliosDB";
+
+// Flatten a canonical HeliosDB record (physical/orbital/discovery/provenance/
+// render sections) into the legacy engine shape normalizeBody expects.
+function adaptCanonical(entry, body, byId) {
+  const phys = body.physical ?? {};
+  const orb = body.orbital ?? {};
+  const lan = orb.longitude_ascending_node_deg ?? 0;
+  const aop = orb.argument_periapsis_deg ?? 0;
+  const period = orb.orbital_period_days;
+  const colorHex = body.render?.color_hex;
+  return {
+    id: entry.id,
+    name: entry.name,
+    parent: body.parent_id ? (byId[body.parent_id]?.name ?? null) : null,
+    classification: entry.classification,
+    radius_km: phys.radius_km ?? null,
+    render: {
+      color: colorHex ? parseInt(colorHex.slice(1), 16) : undefined,
+      radius: body.render?.radius ?? undefined,
+    },
+    orbit: orb.semi_major_axis_au == null ? undefined : {
+      semi_major_axis_au: orb.semi_major_axis_au,
+      eccentricity: orb.eccentricity ?? 0,
+      inclination_deg: orb.inclination_deg ?? 0,
+      longitude_ascending_node_deg: lan,
+      longitude_periapsis_deg: (lan + aop) % 360,
+      mean_longitude_deg: orb.mean_longitude_deg ?? 0,
+      ...(period ? { rates: { mean_longitude_deg: (360 * 36525) / period } } : {}),
+    },
+  };
+}
+
+// Supplement legacy data with canonical bodies the engine doesn't ship
+// (outer irregulars etc.). Never throws: without a reachable snapshot the
+// engine runs on legacy data exactly as before.
+async function loadCanonicalSupplement(known) {
+  try {
+    const knownNames = new Set(known.map((body) => body.name));
+    const indexResponse = await fetch(`${CANONICAL_BASE}/data/index.json`);
+    if (!indexResponse.ok) return [];
+    const index = await indexResponse.json();
+    if (!Array.isArray(index)) return [];
+    const byId = Object.fromEntries(index.map((entry) => [entry.id, entry]));
+    const missing = index.filter((entry) => !knownNames.has(entry.name));
+    const loaded = await Promise.all(missing.map(async (entry) => {
+      const response = await fetch(`${CANONICAL_BASE}/data/bodies/${entry.id}.json`);
+      if (!response.ok) return null;
+      return adaptCanonical(entry, await response.json(), byId);
+    }));
+    return loaded
+      .filter(Boolean)
+      .map((body) => normalizeBody(body, `canonical:${body.name}`));
+  } catch {
+    return [];
+  }
+}
+
 export async function loadBodies() {
   const manifestResponse = await fetch(MANIFEST_URL, { cache: "no-store" });
   if (!manifestResponse.ok) {
@@ -168,5 +228,6 @@ export async function loadBodies() {
   const bodies = loaded.flat();
   const knownNames = new Set(bodies.map((body) => body.name));
   const saturnMoons = await loadSaturnMoons();
-  return [...bodies, ...saturnMoons.filter((body) => !knownNames.has(body.name))];
+  const legacy = [...bodies, ...saturnMoons.filter((body) => !knownNames.has(body.name))];
+  return [...legacy, ...(await loadCanonicalSupplement(legacy))];
 }
