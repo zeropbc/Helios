@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2017 J 9",
+   "kind": "provisional",
+   "since": 2017
+  },
+  {
+   "designation": "Jupiter LXX",
+   "kind": "roman-numeral",
+   "since": 2018
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2018,
+  "discoverer": "Sheppard",
+  "discovery_year": 2017
+ },
+ "id": "s-2017-j-9",
+ "ingest_origin": "batch",
+ "name": "S/2017 J 9",
+ "orbital": {
+  "apoapsis_au": 0.17414517518263048,
+  "eccentricity": 0.197,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 155.4,
+  "orbital_period_days": 656.05,
+  "orbital_period_years": 1.7961670088980148,
+  "periapsis_au": 0.11682420691031935,
+  "rates_json": {},
+  "semi_major_axis_au": 0.1454846910464749,
+  "semi_major_axis_km": 21764200.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 16.1,
+  "dimensions_json": [],
+  "mass_kg": 14000000000000.0,
+  "radius_km": 1.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

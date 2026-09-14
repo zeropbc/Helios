@@ -1,0 +1,117 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 0.85,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XI",
+   "kind": "roman-numeral",
+   "since": 1938
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1938,
+  "discoverer": "Nicholson",
+  "discovery_year": 1938
+ },
+ "id": "carme",
+ "ingest_origin": "batch",
+ "name": "Carme",
+ "orbital": {
+  "apoapsis_au": 0.19504643390622808,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.261,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 164.6,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 270.0,
+  "orbital_period_days": 719.28,
+  "orbital_period_years": 1.9692813141683778,
+  "periapsis_au": 0.11430556277295999,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15467599833959403,
+  "semi_major_axis_km": 23139200.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 10.7,
+  "dimensions_json": [],
+  "mass_kg": 5.3e+16,
+  "radius_km": 23.35
+ },
+ "provenance": {
+  "conflicts": [
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 0.261,
+    "field": "eccentricity",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 0.23
+   },
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 0.15467599833959403,
+    "field": "semi_major_axis_au",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 0.153
+   },
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 23139200.0,
+    "field": "semi_major_axis_km",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 22888474.2171
+   }
+  ],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#778899",
+  "radius": 0.08,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

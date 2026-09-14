@@ -1,0 +1,78 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XXXIV",
+   "kind": "roman-numeral",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2004,
+  "discoverer": "Cassini",
+  "discovery_year": 2004
+ },
+ "id": "polydeuces",
+ "ingest_origin": "batch",
+ "name": "Polydeuces",
+ "orbital": {
+  "apoapsis_au": 0.0025720579992185677,
+  "eccentricity": 0.019,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.2,
+  "orbital_period_days": 2.73692,
+  "orbital_period_years": 0.007493278576317591,
+  "periapsis_au": 0.0024761421955185625,
+  "rates_json": {},
+  "semi_major_axis_au": 0.002524100097368565,
+  "semi_major_axis_km": 377600.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [
+   3.5,
+   3.1,
+   2.7
+  ],
+  "mass_kg": 7500000000000.0,
+  "radius_km": 1.5413496629273609,
+  "radius_uncertainty_km": 0.09999999999999998
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XXVI",
+   "kind": "roman-numeral",
+   "since": 2000
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2000,
+  "discoverer": "Holman",
+  "discovery_year": 2000
+ },
+ "id": "albiorix",
+ "ingest_origin": "batch",
+ "name": "Albiorix",
+ "orbital": {
+  "apoapsis_au": 0.16176616877475383,
+  "eccentricity": 0.482,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 36.8,
+  "orbital_period_days": 779.07,
+  "orbital_period_years": 2.132977412731006,
+  "periapsis_au": 0.056541751299137986,
+  "rates_json": {},
+  "semi_major_axis_au": 0.10915396003694591,
+  "semi_major_axis_km": 16329200.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 11.2,
+  "dimensions_json": [],
+  "mass_kg": 1.2e+16,
+  "radius_km": 14.3
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

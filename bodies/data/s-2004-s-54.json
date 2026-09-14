@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2004 S 54",
+   "kind": "provisional",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2025,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2004
+ },
+ "id": "s-2004-s-54",
+ "ingest_origin": "batch",
+ "name": "S/2004 S 54",
+ "orbital": {
+  "apoapsis_au": 0.10350419713560804,
+  "eccentricity": 0.373,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 48.1,
+  "orbital_period_days": 447.14,
+  "orbital_period_years": 1.2242026009582478,
+  "periapsis_au": 0.047266665407156766,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0753854312713824,
+  "semi_major_axis_km": 11277500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 16.1,
+  "dimensions_json": [],
+  "mass_kg": 34000000000000.004,
+  "radius_km": 2.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XXXII",
+   "kind": "roman-numeral",
+   "since": 2002
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2002,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2001
+ },
+ "id": "eurydome",
+ "ingest_origin": "batch",
+ "name": "Eurydome",
+ "orbital": {
+  "apoapsis_au": 0.19696284019368732,
+  "eccentricity": 0.287,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 148.9,
+  "orbital_period_days": 707.86,
+  "orbital_period_years": 1.9380150581793292,
+  "periapsis_au": 0.10911771954786254,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15304027987077493,
+  "semi_major_axis_km": 22894500.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 16.2,
+  "dimensions_json": [],
+  "mass_kg": 14000000000000.0,
+  "radius_km": 1.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

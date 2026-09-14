@@ -1,0 +1,78 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XXXV",
+   "kind": "roman-numeral",
+   "since": 2005
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2005,
+  "discoverer": "Cassini",
+  "discovery_year": 2005
+ },
+ "id": "daphnis",
+ "ingest_origin": "batch",
+ "name": "Daphnis",
+ "orbital": {
+  "apoapsis_au": 0.0009124461421896429,
+  "eccentricity": 0.0,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 0.59408,
+  "orbital_period_years": 0.0016265023956194388,
+  "periapsis_au": 0.0009124461421896429,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0009124461421896429,
+  "semi_major_axis_km": 136500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [
+   9.8,
+   8.4,
+   5.6
+  ],
+  "mass_kg": 68000000000000.01,
+  "radius_km": 3.862493846933569,
+  "radius_uncertainty_km": 0.5250000000000001
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

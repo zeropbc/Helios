@@ -8,8 +8,8 @@ import { createResizeHandler } from "./resize.js";
 import { createComposer } from "../fx/composer.js";
 import { createSun } from "../bodies/sun/sun.js";
 import { createSunLight, createAmbientLight } from "../bodies/sun/lights.js";
-import { buildSolarSystem } from "../system/solar-system.js?v=moon-orbits";
-import { loadBodies } from "../system/body-data.js?v=lod-saturn-5";
+import { buildSolarSystem } from "../system/solar-system.js?v=separate-systems-2";
+import { loadBodies } from "../system/body-data.js?v=canonical-system-origin-2";
 import { TIME } from "../config/time.js";
 import { loadMpcBodies } from "../system/mpc-catalog.js";
 import { createMinorBodyMesh } from "../system/minor-body-mesh.js";
@@ -143,14 +143,18 @@ function createSearch(system, bodies, camera, controls) {
       result.className = "search-result";
       result.textContent = body.name;
       result.addEventListener("click", () => {
-        const object = system.planets.find((entry) => entry.config.name === body.name);
-        if (object) {
-          controls.target.copy(object.mesh.position);
-          const distance = Math.max(object.mesh.scale.x * 12, 0.00001);
+        const object = system.planets.find((entry) =>
+          entry.config.name === body.name || entry.config.id === body.id || entry.config.name === body.parent_name
+        );
+        const target = object ?? system.planets.find((entry) => entry.config.name === body.name || entry.config.id === body.id);
+        if (target) {
+          const pos = target.mesh.position.clone();
+          controls.target.copy(pos);
+          const distance = Math.max(target.mesh.scale.x * 12, 0.00001);
           camera.position.set(
-            object.mesh.position.x + distance,
-            object.mesh.position.y + distance * 0.6,
-            object.mesh.position.z + distance
+            pos.x + distance,
+            pos.y + distance * 0.6,
+            pos.z + distance
           );
           controls.update();
         }

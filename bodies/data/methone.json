@@ -1,0 +1,78 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XXXII",
+   "kind": "roman-numeral",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2004,
+  "discoverer": "Cassini",
+  "discovery_year": 2004
+ },
+ "id": "methone",
+ "ingest_origin": "batch",
+ "name": "Methone",
+ "orbital": {
+  "apoapsis_au": 0.0013040920909310777,
+  "eccentricity": 0.002,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 1.00955,
+  "orbital_period_years": 0.0027639972621492127,
+  "periapsis_au": 0.0012988861344802552,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0013014891127056665,
+  "semi_major_axis_km": 194700.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [
+   4.0,
+   2.6,
+   2.4
+  ],
+  "mass_kg": 3920000000000.0,
+  "radius_km": 1.4612287148125607,
+  "radius_uncertainty_km": 0.2
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

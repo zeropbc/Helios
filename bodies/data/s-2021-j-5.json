@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2021 J 5",
+   "kind": "provisional",
+   "since": 2021
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2023,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2021
+ },
+ "id": "s-2021-j-5",
+ "ingest_origin": "batch",
+ "name": "S/2021 J 5",
+ "orbital": {
+  "apoapsis_au": 0.19908953958126094,
+  "eccentricity": 0.272,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 164.9,
+  "orbital_period_days": 732.15,
+  "orbital_period_years": 2.004517453798768,
+  "periapsis_au": 0.1139443276848726,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15651693363306676,
+  "semi_major_axis_km": 23414600.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 16.8,
+  "dimensions_json": [],
+  "mass_kg": 4199999999999.9995,
+  "radius_km": 1.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -80,11 +80,19 @@ export function getBodyRank(config) {
   return 3;
 }
 
+export function isLowConfidenceBody(config) {
+  return Boolean(config) && (
+    config.discovery_status === "candidate" ||
+    config.detection_method === "radial_velocity"
+  );
+}
+
 function createLabel(config) {
   const name = typeof config === "string" ? config : config.name;
   const label = document.createElement("div");
   label.className = "body-label";
-  label.textContent = name;
+  const lowConfidence = isLowConfidenceBody(config);
+  label.textContent = lowConfidence ? `${name}*` : name;
   label.dataset.bodyName = name;
   const rank = getBodyRank(config);
   label.dataset.rank = String(rank);
@@ -92,27 +100,30 @@ function createLabel(config) {
   else if (rank === 2) label.classList.add("is-major-moon");
   else if (rank === 3) label.classList.add("is-secondary-moon");
   else label.classList.add("is-minor-moon");
+  if (lowConfidence) label.classList.add("is-low-confidence");
   document.body.append(label);
   return label;
 }
 
 export function createPlanetMesh(config) {
+  const lowConfidence = isLowConfidenceBody(config);
   const detailed = ["Earth", "Jupiter", "Mars", "Saturn", "Uranus", "Neptune"].includes(config.name);
   const material = new THREE.MeshStandardMaterial({
     map: createSurfaceTexture(config, false),
     color: detailed
       ? 0xffffff
       : config.render.color,
-    roughness: 0.8,
+    roughness: lowConfidence ? 1.0 : 0.8,
     metalness: 0.1,
-    transparent: false,
-    opacity: 1,
-    depthWrite: true,
+    transparent: lowConfidence,
+    opacity: lowConfidence ? 0.72 : 1,
+    depthWrite: !lowConfidence,
     emissive: config.name === "Saturn" ? 0x5a3d28 : 0x000000,
     emissiveIntensity: config.name === "Saturn" ? 0.5 : 0,
+    wireframe: lowConfidence,
   });
   const mesh = new THREE.Mesh(LOW_BODY_GEOMETRY, material);
-  mesh.scale.setScalar(config.render.radius);
+  mesh.scale.setScalar(config.render.radius * (lowConfidence ? 0.9 : 1));
   mesh.name = config.name;
   mesh.userData.state = {
     config,
@@ -126,5 +137,6 @@ export function createPlanetMesh(config) {
   };
   mesh.userData.label = createLabel(config);
   mesh.userData.rank = getBodyRank(config);
+  mesh.userData.lowConfidence = lowConfidence;
   return mesh;
 }

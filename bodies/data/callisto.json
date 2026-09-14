@@ -1,0 +1,113 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter IV",
+   "kind": "roman-numeral",
+   "since": 1610
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1610,
+  "discoverer": "Galileo",
+  "discovery_year": 1610
+ },
+ "id": "callisto",
+ "ingest_origin": "batch",
+ "name": "Callisto",
+ "orbital": {
+  "apoapsis_au": 0.012678201709190505,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.0074,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.192,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 315.0,
+  "orbital_period_days": 16.69,
+  "orbital_period_years": 0.045694729637234775,
+  "periapsis_au": 0.012491942640999102,
+  "rates_json": {},
+  "semi_major_axis_au": 0.012585072175094802,
+  "semi_major_axis_km": 1882700.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": -1.2,
+  "density_g_cm3": 1.834,
+  "dimensions_json": [],
+  "mass_kg": 1.0759e+23,
+  "radius_km": 2410.3,
+  "radius_uncertainty_km": 1.5,
+  "surface_radiation_rem_day": 0.01
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   },
+   {
+    "fields_provided": [
+     "surface_radiation_rem_day"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moon surface radiation (NASA Galileo via Helios db)",
+    "source_url": "https://solarsystem.nasa.gov"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "mass_kg",
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#999999",
+  "radius": 0.25,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

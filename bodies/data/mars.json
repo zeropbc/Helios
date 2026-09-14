@@ -1,0 +1,94 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "major-planet",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "mars",
+ "ingest_origin": "batch",
+ "name": "Mars",
+ "orbital": {
+  "apoapsis_au": 1.6660158958649942,
+  "argument_periapsis_deg": 286.4968315,
+  "eccentricity": 0.0933941,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 1.84969142,
+  "longitude_ascending_node_deg": 49.55953891,
+  "mean_longitude_deg": -4.55343205,
+  "orbital_period_days": 686.9797315332722,
+  "orbital_period_years": 1.880847998722169,
+  "periapsis_au": 1.381404784135006,
+  "rates_json": {
+   "eccentricity": 7.882e-05,
+   "inclination_deg": -0.00813131,
+   "longitude_ascending_node_deg": -0.29257343,
+   "longitude_periapsis_deg": 0.44441088,
+   "mean_longitude_deg": 19140.30268499,
+   "semi_major_axis_au": 1.847e-05
+  },
+  "semi_major_axis_au": 1.52371034,
+  "semi_major_axis_km": 227943822.42757303
+ },
+ "parent_id": "sun",
+ "physical": {
+  "axial_tilt_deg": 25.19,
+  "density_g_cm3": 3.933,
+  "dimensions_json": [],
+  "geometric_albedo": 0.17,
+  "gm_km3_s2": 42828.376,
+  "mass_kg": 6.417e+23,
+  "mean_temperature_k": 210.0,
+  "radius_km": 3389.5,
+  "radius_uncertainty_km": 0.2,
+  "rotation_period_h": 24.6229
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "axial_tilt_deg",
+     "density_g_cm3",
+     "geometric_albedo",
+     "gm_km3_s2",
+     "mass_kg",
+     "mean_temperature_k",
+     "radius_km",
+     "rotation_period_h"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#cc5533",
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Solar System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

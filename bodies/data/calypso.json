@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XIV",
+   "kind": "roman-numeral",
+   "since": 1980
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1980,
+  "discoverer": "Pascu et al.",
+  "discovery_year": 1980
+ },
+ "id": "calypso",
+ "ingest_origin": "batch",
+ "name": "Calypso",
+ "orbital": {
+  "apoapsis_au": 0.0019739251542702603,
+  "eccentricity": 0.001,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 1.5,
+  "orbital_period_days": 1.8878,
+  "orbital_period_years": 0.0051685147159479805,
+  "periapsis_au": 0.0019699812478681223,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0019719532010691915,
+  "semi_major_axis_km": 295000.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 9.2,
+  "dimensions_json": [
+   29.0,
+   19.0,
+   13.0
+  ],
+  "mass_kg": 1800000000000000.0,
+  "radius_km": 9.638326959532593,
+  "radius_uncertainty_km": 2.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,73 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2009 S 1",
+   "kind": "provisional",
+   "since": 2009
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2009,
+  "discoverer": "Cassini",
+  "discovery_year": 2009
+ },
+ "id": "s-2009-s-1",
+ "ingest_origin": "batch",
+ "name": "S/2009 S 1",
+ "orbital": {
+  "apoapsis_au": 0.0007815218188128931,
+  "eccentricity": 0.0,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 0.47203,
+  "orbital_period_years": 0.0012923477070499658,
+  "periapsis_au": 0.0007815218188128931,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0007815218188128931,
+  "semi_major_axis_km": 116914.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [],
+  "mass_kg": 7100000000.0,
+  "radius_km": 0.15
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

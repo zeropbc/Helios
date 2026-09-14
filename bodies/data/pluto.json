@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "dwarf-planet",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "134340 Pluto",
+   "kind": "iau-number",
+   "since": 2006
+  }
+ ],
+ "discovery": {},
+ "id": "pluto",
+ "ingest_origin": "batch",
+ "name": "Pluto",
+ "orbital": {
+  "apoapsis_au": 49.30512159999999,
+  "argument_periapsis_deg": 113.8,
+  "eccentricity": 0.2488,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 17.14,
+  "longitude_ascending_node_deg": 110.3,
+  "mean_longitude_deg": 238.9,
+  "periapsis_au": 29.6588784,
+  "rates_json": {},
+  "semi_major_axis_au": 39.482,
+  "semi_major_axis_km": 5906423130.9774
+ },
+ "parent_id": "sun",
+ "physical": {
+  "density_g_cm3": 1.854,
+  "dimensions_json": [],
+  "mass_kg": 1.303e+22,
+  "radius_km": 1188.3,
+  "radius_uncertainty_km": 0.8
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "mass_kg",
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#aaaaaa",
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Solar System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

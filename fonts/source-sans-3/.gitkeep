@@ -1,0 +1,6 @@
+Font binaries are user-supplied and intentionally not committed.
+
+Add the licensed files here, then rebuild:
+  source-sans-3/            -> SourceSans-VF.woff2, SourceSans-IVF.woff2
+  ioskeley-mono/            -> IoskeleyMono-*.woff2
+  terminal-grotesque-open/  -> TerminalGrotesqueOpen.woff2

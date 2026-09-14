@@ -1,0 +1,138 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 0.8,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XVII",
+   "kind": "roman-numeral",
+   "since": 1980
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1980,
+  "discoverer": "Voyager 1",
+  "discovery_year": 1980
+ },
+ "id": "pandora",
+ "ingest_origin": "batch",
+ "name": "Pandora",
+ "orbital": {
+  "apoapsis_au": 0.0009511842604053857,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.0042,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.05,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 140.0,
+  "orbital_period_days": 0.63137,
+  "orbital_period_years": 0.0017285968514715948,
+  "periapsis_au": 0.000943227730045492,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0009472059952254389,
+  "semi_major_axis_km": 141700.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 6.5,
+  "dimensions_json": [
+   104.0,
+   81.0,
+   64.0
+  ],
+  "mass_kg": 1.3569999999999998e+17,
+  "radius_km": 40.6,
+  "radius_uncertainty_km": 1.5
+ },
+ "provenance": {
+  "conflicts": [
+   {
+    "chosen_source": "Helios seed data",
+    "chosen_value": 0.0042,
+    "field": "eccentricity",
+    "reason": "higher_precision",
+    "rejected_source": "Saturn moons table (JPL/SSD via Helios db)",
+    "rejected_value": 0.004
+   },
+   {
+    "chosen_source": "Helios seed data",
+    "chosen_value": 0.05,
+    "field": "inclination_deg",
+    "reason": "higher_precision",
+    "rejected_source": "Saturn moons table (JPL/SSD via Helios db)",
+    "rejected_value": 0.0
+   },
+   {
+    "chosen_source": "Saturn moons table (JPL/SSD via Helios db)",
+    "chosen_value": 0.0009472059952254389,
+    "field": "semi_major_axis_au",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 0.00104
+   },
+   {
+    "chosen_source": "Saturn moons table (JPL/SSD via Helios db)",
+    "chosen_value": 141700.0,
+    "field": "semi_major_axis_km",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 155581.78552799998
+   }
+  ],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   },
+   {
+    "fields_provided": [
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#aaaaaa",
+  "radius": 0.12,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

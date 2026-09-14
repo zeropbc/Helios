@@ -1,0 +1,73 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XLIX",
+   "kind": "roman-numeral",
+   "since": 2007
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2007,
+  "discoverer": "Cassini",
+  "discovery_year": 2007
+ },
+ "id": "anthe",
+ "ingest_origin": "batch",
+ "name": "Anthe",
+ "orbital": {
+  "apoapsis_au": 0.0013268651423392218,
+  "eccentricity": 0.002,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 1.0389,
+  "orbital_period_years": 0.00284435318275154,
+  "periapsis_au": 0.0013215682755035364,
+  "rates_json": {},
+  "semi_major_axis_au": 0.001324216708921379,
+  "semi_major_axis_km": 198100.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [],
+  "mass_kg": 1500000000000.0,
+  "radius_km": 0.9
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

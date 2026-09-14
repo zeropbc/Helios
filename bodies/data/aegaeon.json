@@ -1,0 +1,78 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn LIII",
+   "kind": "roman-numeral",
+   "since": 2009
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2009,
+  "discoverer": "Cassini",
+  "discovery_year": 2008
+ },
+ "id": "aegaeon",
+ "ingest_origin": "batch",
+ "name": "Aegaeon",
+ "orbital": {
+  "apoapsis_au": 0.0011196683429799646,
+  "eccentricity": 0.0,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 0.80812,
+  "orbital_period_years": 0.0022125119780971934,
+  "periapsis_au": 0.0011196683429799646,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0011196683429799646,
+  "semi_major_axis_km": 167500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [
+   1.4,
+   0.5,
+   0.4
+  ],
+  "mass_kg": 78200000000.0,
+  "radius_km": 0.327106631018859,
+  "radius_uncertainty_km": 0.12499999999999999
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

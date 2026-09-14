@@ -1,0 +1,98 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "major-planet",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "neptune",
+ "ingest_origin": "batch",
+ "name": "Neptune",
+ "orbital": {
+  "apoapsis_au": 30.328237830071327,
+  "argument_periapsis_deg": 273.18053653,
+  "eccentricity": 0.00859048,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 1.77004347,
+  "longitude_ascending_node_deg": 131.78422574,
+  "mean_longitude_deg": -55.12002969,
+  "orbital_period_days": 60189.65901627789,
+  "orbital_period_years": 164.79030531492918,
+  "periapsis_au": 29.811607689928678,
+  "rates_json": {
+   "eccentricity": 5.105e-05,
+   "inclination_deg": 0.00035372,
+   "longitude_ascending_node_deg": -0.00508664,
+   "longitude_periapsis_deg": -0.32241464,
+   "mean_longitude_deg": 218.45945325,
+   "semi_major_axis_au": 0.00026291
+  },
+  "semi_major_axis_au": 30.06992276,
+  "semi_major_axis_km": 4498396417.009467
+ },
+ "parent_id": "sun",
+ "physical": {
+  "axial_tilt_deg": 28.32,
+  "density_g_cm3": 1.638,
+  "dimensions_json": [],
+  "equatorial_radius_km": 24764.0,
+  "geometric_albedo": 0.442,
+  "gm_km3_s2": 6836529.0,
+  "mass_kg": 1.024e+26,
+  "mean_temperature_k": 72.0,
+  "polar_radius_km": 24341.0,
+  "radius_km": 24622.0,
+  "radius_uncertainty_km": 19.0,
+  "rotation_period_h": 16.11
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "axial_tilt_deg",
+     "density_g_cm3",
+     "equatorial_radius_km",
+     "geometric_albedo",
+     "gm_km3_s2",
+     "mass_kg",
+     "mean_temperature_k",
+     "polar_radius_km",
+     "radius_km",
+     "rotation_period_h"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#3345aa",
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Solar System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

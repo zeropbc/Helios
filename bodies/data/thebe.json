@@ -1,0 +1,122 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 0.85,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XIV",
+   "kind": "roman-numeral",
+   "since": 1980
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1980,
+  "discoverer": "Synnott(Voyager 1)",
+  "discovery_year": 1979
+ },
+ "id": "thebe",
+ "ingest_origin": "batch",
+ "name": "Thebe",
+ "orbital": {
+  "apoapsis_au": 0.0015091929881325512,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.0175,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 1.076,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 45.0,
+  "orbital_period_days": 0.6753,
+  "orbital_period_years": 0.001848870636550308,
+  "periapsis_au": 0.0014572797158134954,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0014832363519730232,
+  "semi_major_axis_km": 221889.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 9.0,
+  "dimensions_json": [
+   116.0,
+   98.0,
+   84.0
+  ],
+  "mass_kg": 7e+17,
+  "radius_km": 49.23694759198363,
+  "radius_uncertainty_km": 4.0
+ },
+ "provenance": {
+  "conflicts": [
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 1.076,
+    "field": "inclination_deg",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 1.1
+   },
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 0.0014832363519730232,
+    "field": "semi_major_axis_au",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 0.00145
+   },
+   {
+    "chosen_source": "Jupiter moons table (JPL/SSD via Helios db)",
+    "chosen_value": 221889.0,
+    "field": "semi_major_axis_km",
+    "reason": "higher_precision",
+    "rejected_source": "Helios seed data",
+    "rejected_value": 216916.91251499997
+   }
+  ],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#aaaaaa",
+  "radius": 0.13,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

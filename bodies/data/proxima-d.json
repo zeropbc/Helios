@@ -1,0 +1,42 @@
+{
+  "id": "proxima-d",
+  "name": "Proxima d",
+  "classification": "planet",
+  "aliases": [
+    "Proxima Centauri d",
+    "Proxima Cen d",
+    "α Centauri d"
+  ],
+  "parent_id": "proxima-centauri",
+  "system_id": "alpha-centauri",
+  "render": {
+    "color_hex": "#6b9ad1",
+    "radius": 0.7
+  },
+  "physical": {
+    "radius_km": null,
+    "mass_kg": null,
+    "spectral_type": null
+  },
+  "orbital": {
+    "epoch_jd": 2460557.55,
+    "semi_major_axis_au": 0.02881,
+    "eccentricity": 0.0,
+    "inclination_deg": null,
+    "longitude_ascending_node_deg": null,
+    "argument_periapsis_deg": null,
+    "mean_longitude_deg": null,
+    "orbital_period_days": 5.12338
+  },
+  "discovery": {
+    "detection_method": "radial_velocity",
+    "discovery_status": "confirmed",
+    "minimum_mass_earth": 0.260
+  },
+  "astrometry": {
+    "distance_pc": 1.30119
+  },
+  "catalog_ids": {
+    "NASA_EXOPLANET_ARCHIVE": "Proxima Cen d"
+  }
+}

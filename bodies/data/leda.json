@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XIII",
+   "kind": "roman-numeral",
+   "since": 1974
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1974,
+  "discoverer": "Kowal",
+  "discovery_year": 1974
+ },
+ "id": "leda",
+ "ingest_origin": "batch",
+ "name": "Leda",
+ "orbital": {
+  "apoapsis_au": 0.0865702321791135,
+  "eccentricity": 0.162,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 28.2,
+  "orbital_period_days": 240.33,
+  "orbital_period_years": 0.657987679671458,
+  "periapsis_au": 0.062431888611099065,
+  "rates_json": {},
+  "semi_major_axis_au": 0.07450106039510629,
+  "semi_major_axis_km": 11145200.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 12.7,
+  "dimensions_json": [],
+  "mass_kg": 5200000000000000.0,
+  "radius_km": 10.75
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XVIII",
+   "kind": "roman-numeral",
+   "since": 1990
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1990,
+  "discoverer": "Showalter",
+  "discovery_year": 1990
+ },
+ "id": "pan",
+ "ingest_origin": "batch",
+ "name": "Pan",
+ "orbital": {
+  "apoapsis_au": 0.0008930608395350644,
+  "eccentricity": 0.0,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "orbital_period_days": 0.57505,
+  "orbital_period_years": 0.0015744010951403147,
+  "periapsis_au": 0.0008930608395350644,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0008930608395350644,
+  "semi_major_axis_km": 133600.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 9.2,
+  "dimensions_json": [
+   35.0,
+   28.0,
+   21.0
+  ],
+  "mass_kg": 4300000000000000.0,
+  "radius_km": 13.702036744091021,
+  "radius_uncertainty_km": 1.75
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

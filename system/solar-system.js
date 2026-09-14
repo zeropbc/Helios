@@ -14,6 +14,8 @@ export function buildSolarSystem(scene, bodies) {
   const bodyByName = new Map(bodies.map((body) => [body.name, body]));
   const objects = new Map();
   const orbitLines = [];
+  const systemOrigins = new Map();
+  let detachedSystemIndex = 0;
   let lastUpdate = 0;
   let lastLabelUpdate = 0;
   let lastLabelCollisionUpdate = 0;
@@ -23,11 +25,27 @@ export function buildSolarSystem(scene, bodies) {
   const worldPosition = new THREE.Vector3();
 
   for (const config of bodies) {
-    if (!config.orbit) continue;
+    const systemKey = config.system_id ?? "solar-system";
+    if (!systemOrigins.has(systemKey)) {
+      if (systemKey === "solar-system") {
+        systemOrigins.set(systemKey, new THREE.Vector3(0, 0, 0));
+      } else {
+        const offset = new THREE.Vector3(9000 + detachedSystemIndex * 18000, 0, 0);
+        detachedSystemIndex += 1;
+        systemOrigins.set(systemKey, offset);
+      }
+    }
+  }
+
+  for (const config of bodies) {
+    const systemKey = config.system_id ?? "solar-system";
+    const detachedSystem = systemKey !== "solar-system";
+    if (!detachedSystem && !config.orbit && !config.parent && config.classification !== "star") continue;
     const mesh = createPlanetMesh(config);
-    const orbit = createOrbiter(config);
+    const orbit = config.orbit ? createOrbiter(config) : null;
+    mesh.position.copy(systemOrigins.get(systemKey) ?? new THREE.Vector3());
     scene.add(mesh);
-    objects.set(config.name, { mesh, orbit, config });
+    objects.set(config.name, { mesh, orbit, config, systemOrigin: systemOrigins.get(systemKey) ?? new THREE.Vector3() });
 
     if (config.name === "Saturn") {
       const rings = createSaturnRings(config);
@@ -41,7 +59,8 @@ export function buildSolarSystem(scene, bodies) {
     }
   }
 
-  for (const { mesh, config } of objects.values()) {
+  for (const { mesh, config, orbit } of objects.values()) {
+    if (!orbit) continue;
     const parent = config.parent && objects.get(config.parent);
     const rank = mesh.userData.rank ?? 3;
     const opacity = parent ? (rank === 4 ? 0.12 : 0.22) : 0.4;
@@ -59,14 +78,27 @@ export function buildSolarSystem(scene, bodies) {
       if (timestamp - lastUpdate < 33) return;
       lastUpdate = timestamp;
       for (const body of objects.values()) {
-        const position = body.orbit.getPosition(date);
         const parent = body.config.parent && objects.get(body.config.parent);
+        const detachedSystem = body.config.system_id && body.config.system_id !== "solar-system";
+
+        if (!body.orbit) {
+          if (parent) {
+            body.mesh.position.copy(parent.mesh.position);
+          } else if (detachedSystem) {
+            body.mesh.position.copy(body.systemOrigin);
+          }
+          continue;
+        }
+
+        const position = body.orbit.getPosition(date);
         if (parent) {
           body.mesh.position.set(
             parent.mesh.position.x + position.x,
             parent.mesh.position.y + position.y,
             parent.mesh.position.z + position.z
           );
+        } else if (detachedSystem) {
+          body.mesh.position.copy(body.systemOrigin).add(position);
         } else {
           body.mesh.position.set(position.x, position.y, position.z);
         }

@@ -1,0 +1,84 @@
+{
+ "aliases": [
+  "Luna"
+ ],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "moon",
+ "ingest_origin": "batch",
+ "name": "Moon",
+ "orbital": {
+  "apoapsis_au": 0.0027106288439999997,
+  "argument_periapsis_deg": 193.07,
+  "eccentricity": 0.0549,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 5.145,
+  "longitude_ascending_node_deg": 125.08,
+  "mean_longitude_deg": 218.316,
+  "orbital_period_days": 27.321582260337877,
+  "orbital_period_years": 0.07480241549716052,
+  "periapsis_au": 0.002428491156,
+  "rates_json": {
+   "mean_longitude_deg": 481267.881
+  },
+  "semi_major_axis_au": 0.00256956,
+  "semi_major_axis_km": 384400.70463589195
+ },
+ "parent_id": "earth",
+ "physical": {
+  "density_g_cm3": 3.344,
+  "dimensions_json": [],
+  "gm_km3_s2": 4902.8001,
+  "mass_kg": 7.342e+22,
+  "radius_km": 1737.4,
+  "radius_uncertainty_km": 0.1,
+  "rotation_period_h": 655.728
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "orbital_period_days",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "gm_km3_s2",
+     "mass_kg",
+     "radius_km",
+     "rotation_period_h"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#999999",
+  "radius": 0.27,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Earth-Moon System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

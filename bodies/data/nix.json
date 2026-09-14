@@ -1,0 +1,59 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "nix",
+ "ingest_origin": "batch",
+ "name": "Nix",
+ "orbital": {
+  "apoapsis_au": 0.00032421,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.01,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.0,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 144.0,
+  "periapsis_au": 0.00031779,
+  "rates_json": {},
+  "semi_major_axis_au": 0.000321,
+  "semi_major_axis_km": 48020.916494699995
+ },
+ "parent_id": "pluto",
+ "physical": {
+  "dimensions_json": []
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#cccccc",
+  "radius": 0.12,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Plutonian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

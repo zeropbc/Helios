@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XXIV",
+   "kind": "roman-numeral",
+   "since": 2001
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2001,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2000
+ },
+ "id": "iocaste",
+ "ingest_origin": "batch",
+ "name": "Iocaste",
+ "orbital": {
+  "apoapsis_au": 0.1721895691393688,
+  "eccentricity": 0.223,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 148.7,
+  "orbital_period_days": 624.55,
+  "orbital_period_years": 1.7099247091033538,
+  "periapsis_au": 0.1093959895513406,
+  "rates_json": {},
+  "semi_major_axis_au": 0.1407927793453547,
+  "semi_major_axis_km": 21062300.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 15.4,
+  "dimensions_json": [],
+  "mass_kg": 65000000000000.0,
+  "radius_km": 2.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

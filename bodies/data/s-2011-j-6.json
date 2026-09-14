@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2011 J 6",
+   "kind": "provisional",
+   "since": 2011
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2026,
+  "discoverer": "Sheppard",
+  "discovery_year": 2011
+ },
+ "id": "s-2011-j-6",
+ "ingest_origin": "batch",
+ "name": "S/2011 J 6",
+ "orbital": {
+  "apoapsis_au": 0.19588514571016555,
+  "eccentricity": 0.261,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 164.9,
+  "orbital_period_days": 723.93,
+  "orbital_period_years": 1.982012320328542,
+  "periapsis_au": 0.11479708380635394,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15534111475825974,
+  "semi_major_axis_km": 23238700.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 16.9,
+  "dimensions_json": [],
+  "mass_kg": 519999999999.99994,
+  "radius_km": 0.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

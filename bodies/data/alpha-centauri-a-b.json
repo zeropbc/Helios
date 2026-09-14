@@ -1,0 +1,42 @@
+{
+  "id": "alpha-centauri-a-b",
+  "name": "Alpha Centauri A b",
+  "classification": "planet",
+  "aliases": [
+    "α Centauri A b",
+    "Alpha Cen A b",
+    "alf Cen A b"
+  ],
+  "parent_id": "alpha-centauri-a",
+  "system_id": "alpha-centauri",
+  "render": {
+    "color_hex": "#c4a1ff",
+    "radius": 7.0
+  },
+  "physical": {
+    "radius_km": 44600.0,
+    "mass_kg": null,
+    "spectral_type": null
+  },
+  "orbital": {
+    "epoch_jd": 2451545.0,
+    "semi_major_axis_au": 1.9,
+    "eccentricity": 0.4,
+    "inclination_deg": 70.0,
+    "longitude_ascending_node_deg": null,
+    "argument_periapsis_deg": null,
+    "mean_longitude_deg": null,
+    "orbital_period_days": null
+  },
+  "discovery": {
+    "detection_method": "direct_imaging",
+    "discovery_status": "candidate",
+    "minimum_mass_earth": null
+  },
+  "astrometry": {
+    "distance_pc": 1.338
+  },
+  "catalog_ids": {
+    "NASA_EXOPLANET_ARCHIVE": "alf Cen A b"
+  }
+}

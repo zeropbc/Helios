@@ -1,0 +1,59 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "dwarf-planet",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "orcus",
+ "ingest_origin": "batch",
+ "name": "Orcus",
+ "orbital": {
+  "apoapsis_au": 48.1791,
+  "argument_periapsis_deg": 164.70000000000002,
+  "eccentricity": 0.23,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 20.6,
+  "longitude_ascending_node_deg": 268.7,
+  "mean_longitude_deg": 145.0,
+  "periapsis_au": 30.1609,
+  "rates_json": {},
+  "semi_major_axis_au": 39.17,
+  "semi_major_axis_km": 5859748595.319
+ },
+ "parent_id": "sun",
+ "physical": {
+  "dimensions_json": []
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#999999",
+  "radius": 0.16,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Solar System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

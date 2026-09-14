@@ -1,0 +1,62 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2004 S 6",
+   "kind": "provisional",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "discovery_year": 2004
+ },
+ "id": "s-2004-s-6",
+ "ingest_origin": "batch",
+ "name": "S/2004 S 6",
+ "orbital": {
+  "epoch_jd": 2451545.0,
+  "orbital_period_days": 0.61801,
+  "orbital_period_years": 0.0016920191649555099,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0009367111934434774,
+  "semi_major_axis_km": 140130.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [],
+  "radius_km": 2.0,
+  "radius_uncertainty_km": 0.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "discovery_year",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn ring-moonlet candidates (NASA via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

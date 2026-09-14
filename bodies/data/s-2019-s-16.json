@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2019 S 16",
+   "kind": "provisional",
+   "since": 2019
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2023,
+  "discoverer": "Ashton et al.",
+  "discovery_year": 2019
+ },
+ "id": "s-2019-s-16",
+ "ingest_origin": "batch",
+ "name": "S/2019 S 16",
+ "orbital": {
+  "apoapsis_au": 0.19439782039624984,
+  "eccentricity": 0.25,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 162.0,
+  "orbital_period_days": 1324.95,
+  "orbital_period_years": 3.6275154004106778,
+  "periapsis_au": 0.11663869223774989,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15551825631699986,
+  "semi_major_axis_km": 23265200.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 16.7,
+  "dimensions_json": [],
+  "mass_kg": 14000000000000.0,
+  "radius_km": 1.5
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

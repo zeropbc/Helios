@@ -1,0 +1,58 @@
+{
+  "id": "alpha-centauri-a",
+  "name": "Alpha Centauri A",
+  "classification": "star",
+  "aliases": [
+    "α Centauri A",
+    "Alpha Cen A",
+    "Rigil Kentaurus",
+    "Toliman A",
+    "HD 128620",
+    "HIP 71683",
+    "HR 5459",
+    "GJ 559 A"
+  ],
+  "parent_id": null,
+  "system_id": "alpha-centauri",
+  "render": {
+    "color_hex": "#fff4d6",
+    "radius": 2.2
+  },
+  "physical": {
+    "radius_km": 851000.0,
+    "mass_kg": 2.148e30,
+    "spectral_type": "G2V"
+  },
+  "orbital": {
+    "epoch_jd": 2451545.0,
+    "semi_major_axis_au": null,
+    "eccentricity": null,
+    "inclination_deg": null,
+    "longitude_ascending_node_deg": null,
+    "argument_periapsis_deg": null,
+    "mean_longitude_deg": null,
+    "orbital_period_days": null
+  },
+  "discovery": {
+    "detection_method": "astrometry",
+    "discovery_status": "confirmed",
+    "minimum_mass_earth": null
+  },
+  "astrometry": {
+    "distance_pc": 1.338,
+    "parallax_mas": 750.81,
+    "proper_motion_ra_mas_yr": -3679.25,
+    "proper_motion_dec_mas_yr": 473.67,
+    "radial_velocity_km_s": -21.6
+  },
+  "catalog_ids": {
+    "HIP": "HIP 71683",
+    "HD": "HD 128620",
+    "HR": "HR 5459",
+    "GJ": "GJ 559 A"
+  },
+  "j2000": {
+    "ra": "14h 39m 36.49400s",
+    "dec": "-60° 50′ 02.3737″"
+  }
+}

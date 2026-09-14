@@ -1,15 +1,67 @@
+/* Helios — Zero design language for the interface layer.
+   Fonts are user-supplied: add binaries to fonts/<family>/, then reload.
+   Astronomical rendering (planet/atmosphere/orbit/star colors, clear color)
+   is intentionally untouched — accent belongs to the interface layer only. */
+@font-face { font-family: 'Source Sans 3'; src: url('fonts/source-sans-3/SourceSans-VF.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('fonts/source-sans-3/SourceSans-IVF.woff2') format('woff2'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Ioskeley Mono'; src: url('fonts/ioskeley-mono/IoskeleyMonoTerm-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Ioskeley Mono'; src: url('fonts/ioskeley-mono/IoskeleyMonoTerm-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Ioskeley Mono'; src: url('fonts/ioskeley-mono/IoskeleyMonoTerm-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Ioskeley Mono'; src: url('fonts/ioskeley-mono/IoskeleyMonoTerm-MediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Ioskeley Mono'; src: url('fonts/ioskeley-mono/IoskeleyMonoTerm-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Terminal Grotesque Open'; src: url('fonts/terminal-grotesque-open/terminal-grotesque-webfont.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* Shared Zero tokens. Helios chrome defaults to the dark pair because the
+   3D viewport is space-black; light OS themes only affect panels. */
+:root {
+  --zero-bg: #121212;
+  --zero-fg: #fbfbfb;
+  --zero-accent: #fa4e16;
+
+  --zero-font-sans: 'Source Sans 3', system-ui, sans-serif;
+  --zero-font-mono: 'Ioskeley Mono', ui-monospace, monospace;
+  --zero-font-wordmark: 'Terminal Grotesque Open', 'Source Sans 3', sans-serif;
+
+  --chrome-bg: rgba(18, 18, 18, 0.92);
+  --chrome-panel: rgba(18, 18, 18, 0.94);
+  --chrome-border: #2a2a2a;
+  --chrome-hover: rgba(250, 78, 22, 0.16);
+  --chrome-fg: var(--zero-fg);
+  --chrome-muted: #a8a8a8;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --chrome-bg: rgba(251, 251, 251, 0.94);
+    --chrome-panel: rgba(251, 251, 251, 0.96);
+    --chrome-border: #e4e2de;
+    --chrome-fg: #121212;
+    --chrome-muted: #5b5b5b;
+  }
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: system-ui, sans-serif; }
+/* NOTE: #000 here is the space viewport, not a brand color — do not migrate. */
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: var(--zero-font-sans); }
 #app { width: 100%; height: 100%; }
 #app canvas { display: block; }
+
+/* — labels: Ioskeley Mono hierarchy for astronomical metadata.
+     Light-on-space treatments stay readable over the starfield in all themes. */
 .body-label {
   position: fixed;
   z-index: 5;
-  font: 500 11px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--zero-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
   letter-spacing: 0.02em;
   pointer-events: none;
   white-space: nowrap;
-  color: rgba(226, 232, 240, 0.9);
+  color: rgba(251, 251, 251, 0.9);
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  padding: 1px 5px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 5px rgba(0, 0, 0, 0.9);
   transform: translate(-50%, -130%);
   user-select: none;
@@ -18,74 +70,98 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font
 .body-label.is-planet {
   font-size: 13px;
   font-weight: 600;
-  color: #ffffff;
+  color: #fbfbfb;
   letter-spacing: 0.03em;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 0.95);
 }
 .body-label.is-major-moon {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(235, 242, 252, 0.92);
+  color: rgba(251, 251, 251, 0.92);
 }
 .body-label.is-secondary-moon {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(203, 213, 225, 0.85);
+  color: rgba(251, 251, 251, 0.72);
 }
 .body-label.is-minor-moon {
   font-size: 10px;
   font-weight: 400;
-  color: rgba(148, 163, 184, 0.75);
+  color: rgba(251, 251, 251, 0.6);
+}
+.body-label.is-low-confidence {
+  color: rgba(251, 251, 251, 0.9);
+  font-style: italic;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(250, 78, 22, 0.35);
+}
+/* Interface-layer selection/focus states — the only sanctioned accent in-scene. */
+.body-label.is-selected,
+.body-label.is-focused {
+  color: var(--zero-accent);
+  border: 1px solid var(--zero-accent);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(250, 78, 22, 0.55);
 }
 .body-label[hidden] { display: none; }
 .search-control {
   position: fixed; top: 20px; left: 20px; z-index: 10;
   display: flex; align-items: center; width: 46px; height: 46px;
-  border-radius: 24px; background: rgba(20, 28, 40, 0.9);
+  border-radius: 24px; background: var(--chrome-bg);
+  border: 1px solid transparent;
   box-shadow: 0 5px 24px rgba(0, 0, 0, 0.4);
   transition: width 180ms ease;
 }
-.search-control.is-open { width: 280px; }
+.search-control.is-open { width: 280px; border-color: var(--chrome-border); }
 .search-button {
   flex: 0 0 46px; width: 46px; height: 46px; border: 0;
-  border-radius: 50%; background: transparent; color: #fff;
+  border-radius: 50%; background: transparent; color: var(--chrome-fg);
   font-size: 27px; line-height: 1; cursor: pointer;
 }
-.search-button:hover { background: rgba(45, 60, 82, 0.95); }
+.search-button:hover { background: var(--chrome-hover); color: var(--zero-accent); }
 .search-input {
   width: 0; border: 0; outline: 0; background: transparent;
-  color: #eef4ff; font: 13px system-ui, sans-serif; opacity: 0;
+  color: var(--chrome-fg); font: 13px var(--zero-font-sans); opacity: 0;
   transition: width 180ms ease, opacity 120ms ease;
 }
 .search-control.is-open .search-input { width: 210px; opacity: 1; }
-.search-input::placeholder { color: #9caec4; }
+.search-input::placeholder { color: var(--chrome-muted); }
+.search-input:focus-visible { outline: 2px solid var(--zero-accent); outline-offset: 2px; }
 .search-results {
   position: absolute; top: 52px; left: 0; width: 280px;
   display: grid; gap: 4px; padding: 8px;
-  border: 1px solid #34465c; border-radius: 12px;
-  background: rgba(10, 16, 24, 0.94);
+  border: 1px solid var(--chrome-border); border-radius: 12px;
+  background: var(--chrome-panel);
 }
 .search-results:empty { display: none; }
 .search-result {
-  padding: 8px 10px; border: 0; border-radius: 7px;
-  background: transparent; color: #eef4ff; text-align: left;
-  cursor: pointer; font: 13px system-ui, sans-serif;
+  padding: 8px 10px; border: 0; border-left: 2px solid transparent; border-radius: 7px;
+  background: transparent; color: var(--chrome-fg); text-align: left;
+  cursor: pointer; font: 13px var(--zero-font-sans);
 }
-.search-result:hover { background: rgba(75, 102, 137, 0.45); }
+.search-result:hover { background: var(--chrome-hover); }
+.search-result.is-active,
+.search-result[aria-selected="true"] { border-left-color: var(--zero-accent); color: var(--zero-accent); }
+.search-result .mono { font-family: var(--zero-font-mono); }
 .settings-button {
   position: fixed; top: 20px; right: 20px; z-index: 10;
   width: 46px; height: 46px; border: 0; border-radius: 50%;
-  background: rgba(20, 28, 40, 0.9); color: #fff; font-size: 23px;
+  background: var(--chrome-bg); color: var(--chrome-fg); font-size: 23px;
   cursor: pointer; box-shadow: 0 5px 24px rgba(0, 0, 0, 0.4);
 }
-.settings-button:hover { background: rgba(45, 60, 82, 0.95); }
+.settings-button:hover { background: var(--chrome-hover); color: var(--zero-accent); }
+.settings-button:focus-visible,
+.search-button:focus-visible,
+.search-result:focus-visible { outline: 2px solid var(--zero-accent); outline-offset: 2px; }
 .settings-panel {
   position: fixed; top: 76px; right: 20px; z-index: 9;
-  min-width: 190px; padding: 16px; border: 1px solid #34465c;
-  border-radius: 12px; background: rgba(10, 16, 24, 0.94);
-  color: #eef4ff; opacity: 0; pointer-events: none;
+  min-width: 190px; padding: 16px; border: 1px solid var(--chrome-border);
+  border-radius: 12px; background: var(--chrome-panel);
+  color: var(--chrome-fg); opacity: 0; pointer-events: none;
   transform: translateY(-8px); transition: opacity 160ms, transform 160ms;
+  font-family: var(--zero-font-sans);
 }
 .settings-panel.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .settings-panel h2 { margin-bottom: 12px; font-size: 15px; }
 .settings-panel label { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+.settings-panel input[type="checkbox"] { accent-color: var(--zero-accent); }
+.settings-panel .telemetry,
+.telemetry { font-family: var(--zero-font-mono); }

@@ -1,0 +1,73 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "phobos",
+ "ingest_origin": "batch",
+ "name": "Phobos",
+ "orbital": {
+  "apoapsis_au": 6.364676999999999e-05,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.0151,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 1.08,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 0.0,
+  "periapsis_au": 6.175323e-05,
+  "rates_json": {},
+  "semi_major_axis_au": 6.27e-05,
+  "semi_major_axis_km": 9379.78649289
+ },
+ "parent_id": "mars",
+ "physical": {
+  "density_g_cm3": 1.872,
+  "dimensions_json": [],
+  "mass_kg": 1.0618e+16,
+  "radius_km": 11.08,
+  "radius_uncertainty_km": 0.04
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "mass_kg",
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#aaaaaa",
+  "radius": 0.18,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Martian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

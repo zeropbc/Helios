@@ -1,0 +1,73 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "triton",
+ "ingest_origin": "batch",
+ "name": "Triton",
+ "orbital": {
+  "apoapsis_au": 0.00237,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.0,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 156.9,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 180.0,
+  "periapsis_au": 0.00237,
+  "rates_json": {},
+  "semi_major_axis_au": 0.00237,
+  "semi_major_axis_km": 354546.953559
+ },
+ "parent_id": "neptune",
+ "physical": {
+  "density_g_cm3": 2.0649,
+  "dimensions_json": [],
+  "mass_kg": 2.139e+22,
+  "radius_km": 1352.6,
+  "radius_uncertainty_km": 2.4
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "mass_kg",
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#dddddd",
+  "radius": 0.28,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Neptunian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

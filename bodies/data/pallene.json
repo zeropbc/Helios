@@ -1,0 +1,78 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn XXXIII",
+   "kind": "roman-numeral",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2004,
+  "discoverer": "Cassini",
+  "discovery_year": 2004
+ },
+ "id": "pallene",
+ "ingest_origin": "batch",
+ "name": "Pallene",
+ "orbital": {
+  "apoapsis_au": 0.0014248143974418216,
+  "eccentricity": 0.004,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.2,
+  "orbital_period_days": 1.15606,
+  "orbital_period_years": 0.0031651197809719374,
+  "periapsis_au": 0.0014134612946733608,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0014191378460575912,
+  "semi_major_axis_km": 212300.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "dimensions_json": [
+   5.8,
+   4.2,
+   3.7
+  ],
+  "mass_kg": 23000000000000.0,
+  "radius_km": 2.2417972926526075,
+  "radius_uncertainty_km": 0.26249999999999996
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

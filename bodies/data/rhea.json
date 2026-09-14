@@ -1,0 +1,129 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 0.95,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn V",
+   "kind": "roman-numeral",
+   "since": 1673
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1673,
+  "discoverer": "Cassini",
+  "discovery_year": 1672
+ },
+ "id": "rhea",
+ "ingest_origin": "batch",
+ "name": "Rhea",
+ "orbital": {
+  "apoapsis_au": 0.003527638445190784,
+  "argument_periapsis_deg": 0.0,
+  "eccentricity": 0.001,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.35,
+  "longitude_ascending_node_deg": 0.0,
+  "mean_longitude_deg": 300.0,
+  "orbital_period_days": 4.5175,
+  "orbital_period_years": 0.012368240930869268,
+  "periapsis_au": 0.0035205902165290647,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0035241143308599246,
+  "semi_major_axis_km": 527200.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 0.1,
+  "density_g_cm3": 1.2372,
+  "dimensions_json": [
+   1530.0,
+   1526.0,
+   1525.0
+  ],
+  "mass_kg": 2.3064854e+21,
+  "radius_km": 763.5,
+  "radius_uncertainty_km": 0.5
+ },
+ "provenance": {
+  "conflicts": [
+   {
+    "chosen_source": "Helios seed data",
+    "chosen_value": 0.35,
+    "field": "inclination_deg",
+    "reason": "higher_precision",
+    "rejected_source": "Saturn moons table (JPL/SSD via Helios db)",
+    "rejected_value": 0.3
+   }
+  ],
+  "sources": [
+   {
+    "fields_provided": [
+     "argument_periapsis_deg",
+     "eccentricity",
+     "inclination_deg",
+     "longitude_ascending_node_deg",
+     "mean_longitude_deg",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn major moons summary (JPL/Cassini via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   },
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "mass_kg",
+     "radius_km"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#dddddd",
+  "radius": 0.23,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

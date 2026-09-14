@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XLII",
+   "kind": "roman-numeral",
+   "since": 2004
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2004,
+  "discoverer": "Sheppard &Gladman et al.",
+  "discovery_year": 2003
+ },
+ "id": "thelxinoe",
+ "ingest_origin": "batch",
+ "name": "Thelxinoe",
+ "orbital": {
+  "apoapsis_au": 0.17229494363384681,
+  "eccentricity": 0.229,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 150.7,
+  "orbital_period_days": 620.55,
+  "orbital_period_years": 1.6989733059548253,
+  "periapsis_au": 0.10808738937485426,
+  "rates_json": {},
+  "semi_major_axis_au": 0.14019116650435054,
+  "semi_major_axis_km": 20972300.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 16.3,
+  "dimensions_json": [],
+  "mass_kg": 4199999999999.9995,
+  "radius_km": 1.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XV",
+   "kind": "roman-numeral",
+   "since": 1979
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1979,
+  "discoverer": "Jewitt(Voyager 2)",
+  "discovery_year": 1979
+ },
+ "id": "adrastea",
+ "ingest_origin": "batch",
+ "name": "Adrastea",
+ "orbital": {
+  "apoapsis_au": 0.0008636052063807885,
+  "eccentricity": 0.0015,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.03,
+  "orbital_period_days": 0.2994,
+  "orbital_period_years": 0.0008197125256673511,
+  "periapsis_au": 0.0008610182711644706,
+  "rates_json": {},
+  "semi_major_axis_au": 0.0008623117387726295,
+  "semi_major_axis_km": 129000.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 12.0,
+  "dimensions_json": [
+   20.0,
+   16.0,
+   14.0
+  ],
+  "mass_kg": 2000000000000000.0,
+  "radius_km": 8.242570599617112,
+  "radius_uncertainty_km": 0.75
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -148,26 +148,70 @@ async function loadSaturnMoons() {
 
 const CANONICAL_BASE =
   (typeof location !== "undefined" ? new URLSearchParams(location.search).get("heliosdb") : null) ||
-  "https://zeropbc.github.io/HeliosDB";
+  new URL("../bodies/data", import.meta.url).href.replace(/\/$/, "");
+
+async function fetchCanonicalIndex() {
+  const candidates = [
+    `${CANONICAL_BASE}/manifest-canonical.json`,
+    `${CANONICAL_BASE}/index.json`,
+  ];
+  for (const url of candidates) {
+    const response = await fetch(url, { cache: "no-store" });
+    if (response.ok) return response.json();
+  }
+  return null;
+}
+
+async function fetchCanonicalBodyRecord(bodyId) {
+  const candidates = [
+    `${CANONICAL_BASE}/${bodyId}.json`,
+    `${CANONICAL_BASE}/bodies/${bodyId}.json`,
+  ];
+  for (const url of candidates) {
+    const response = await fetch(url, { cache: "no-store" });
+    if (response.ok) return response.json();
+  }
+  return null;
+}
+
+function isLowConfidenceBody(body) {
+  return Boolean(body) && (
+    body.discovery_status === "candidate" ||
+    body.detection_method === "radial_velocity"
+  );
+}
 
 // Flatten a canonical HeliosDB record (physical/orbital/discovery/provenance/
 // render sections) into the legacy engine shape normalizeBody expects.
 function adaptCanonical(entry, body, byId) {
   const phys = body.physical ?? {};
   const orb = body.orbital ?? {};
+  const discovery = body.discovery ?? {};
   const lan = orb.longitude_ascending_node_deg ?? 0;
   const aop = orb.argument_periapsis_deg ?? 0;
   const period = orb.orbital_period_days;
   const colorHex = body.render?.color_hex;
+  const detectionMethod = discovery.detection_method ?? body.detection_method ?? null;
+  const discoveryStatus = discovery.discovery_status ?? body.discovery_status ?? null;
+  const minimumMassEarth = discovery.minimum_mass_earth ?? body.minimum_mass_earth ?? null;
   return {
     id: entry.id,
     name: entry.name,
     parent: body.parent_id ? (byId[body.parent_id]?.name ?? null) : null,
+    parent_id: body.parent_id ?? null,
+    system_id: body.system_id ?? entry.system_id ?? null,
     classification: entry.classification,
     radius_km: phys.radius_km ?? null,
+    detection_method: detectionMethod,
+    discovery_status: discoveryStatus,
+    minimum_mass_earth: minimumMassEarth,
     render: {
       color: colorHex ? parseInt(colorHex.slice(1), 16) : undefined,
       radius: body.render?.radius ?? undefined,
+      confidence: isLowConfidenceBody({
+        discovery_status: discoveryStatus,
+        detection_method: detectionMethod,
+      }) ? "low" : "high",
     },
     orbit: orb.semi_major_axis_au == null ? undefined : {
       semi_major_axis_au: orb.semi_major_axis_au,
@@ -187,16 +231,14 @@ function adaptCanonical(entry, body, byId) {
 async function loadCanonicalSupplement(known) {
   try {
     const knownNames = new Set(known.map((body) => body.name));
-    const indexResponse = await fetch(`${CANONICAL_BASE}/data/index.json`);
-    if (!indexResponse.ok) return [];
-    const index = await indexResponse.json();
+    const index = await fetchCanonicalIndex();
     if (!Array.isArray(index)) return [];
     const byId = Object.fromEntries(index.map((entry) => [entry.id, entry]));
     const missing = index.filter((entry) => !knownNames.has(entry.name));
     const loaded = await Promise.all(missing.map(async (entry) => {
-      const response = await fetch(`${CANONICAL_BASE}/data/bodies/${entry.id}.json`);
-      if (!response.ok) return null;
-      return adaptCanonical(entry, await response.json(), byId);
+      const body = await fetchCanonicalBodyRecord(entry.id);
+      if (!body) return null;
+      return adaptCanonical(entry, body, byId);
     }));
     return loaded
       .filter(Boolean)

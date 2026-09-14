@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "S/2006 S 19",
+   "kind": "provisional",
+   "since": 2006
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2023,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2006
+ },
+ "id": "s-2006-s-19",
+ "ingest_origin": "batch",
+ "name": "S/2006 S 19",
+ "orbital": {
+  "apoapsis_au": 0.23339458868380805,
+  "eccentricity": 0.467,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 175.5,
+  "orbital_period_days": 1371.02,
+  "orbital_period_years": 3.7536481861738533,
+  "periapsis_au": 0.08479844292329221,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15909651580355014,
+  "semi_major_axis_km": 23800500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 16.1,
+  "dimensions_json": [],
+  "mass_kg": 34000000000000.004,
+  "radius_km": 2.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

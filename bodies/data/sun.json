@@ -1,0 +1,70 @@
+{
+ "aliases": [
+  "Sol"
+ ],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "star",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [],
+ "discovery": {},
+ "id": "sun",
+ "ingest_origin": "batch",
+ "name": "Sun",
+ "orbital": {
+  "epoch_jd": 2451545.0,
+  "rates_json": {}
+ },
+ "parent_id": null,
+ "physical": {
+  "density_g_cm3": 1.408,
+  "dimensions_json": [],
+  "equatorial_radius_km": 695700.0,
+  "gm_km3_s2": 132712440018.0,
+  "mass_kg": 1.988475e+30,
+  "mean_temperature_k": 5772.0,
+  "radius_km": 695700.0,
+  "rotation_period_h": 609.12,
+  "spectral_type": "G2V"
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "mass_kg",
+     "mean_temperature_k"
+    ],
+    "retrieved_date": "2026-09-01",
+    "source_name": "Helios seed data",
+    "source_url": "https://github.com/zeropbc/Helios"
+   },
+   {
+    "fields_provided": [
+     "density_g_cm3",
+     "equatorial_radius_km",
+     "gm_km3_s2",
+     "mass_kg",
+     "mean_temperature_k",
+     "radius_km",
+     "rotation_period_h",
+     "spectral_type"
+    ],
+    "retrieved_date": "2025-01-15",
+    "source_name": "NASA JPL Solar System Exploration / IAU",
+    "source_url": "https://solarsystem.nasa.gov"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": "#ffff00",
+  "radius": 5.0,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Solar System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

@@ -1,0 +1,80 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "regular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn VII",
+   "kind": "roman-numeral",
+   "since": 1848
+  }
+ ],
+ "discovery": {
+  "announcement_year": 1848,
+  "discoverer": "Bond & Lassell",
+  "discovery_year": 1848
+ },
+ "id": "hyperion",
+ "ingest_origin": "batch",
+ "name": "Hyperion",
+ "orbital": {
+  "apoapsis_au": 0.010943053482912976,
+  "eccentricity": 0.105,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 0.6,
+  "orbital_period_days": 21.2767,
+  "orbital_period_years": 0.05825242984257358,
+  "periapsis_au": 0.00886337816036843,
+  "rates_json": {},
+  "semi_major_axis_au": 0.009903215821640703,
+  "semi_major_axis_km": 1481500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 4.8,
+  "dimensions_json": [
+   360.0,
+   266.0,
+   205.0
+  ],
+  "mass_kg": 5.551e+18,
+  "radius_km": 134.8805527811761,
+  "radius_uncertainty_km": 19.375
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

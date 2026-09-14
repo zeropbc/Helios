@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Saturn LXIII",
+   "kind": "roman-numeral",
+   "since": 2019
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2019,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2004
+ },
+ "id": "thiazzi",
+ "ingest_origin": "batch",
+ "name": "Thiazzi",
+ "orbital": {
+  "apoapsis_au": 0.23814244369455456,
+  "eccentricity": 0.511,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 158.8,
+  "orbital_period_days": 1351.83,
+  "orbital_period_years": 3.7011088295687884,
+  "periapsis_au": 0.07706926205601401,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15760585287528428,
+  "semi_major_axis_km": 23577500.0
+ },
+ "parent_id": "saturn",
+ "physical": {
+  "absolute_magnitude_h": 15.9,
+  "dimensions_json": [],
+  "mass_kg": 34000000000000.004,
+  "radius_km": 2.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Saturn moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Saturnian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

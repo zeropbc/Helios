@@ -1,0 +1,75 @@
+{
+ "aliases": [],
+ "astrometry": {},
+ "catalog_ids": {},
+ "classification": "irregular-moon",
+ "confidence_score": 1.0,
+ "created_at": "2026-09-12T00:00:00Z",
+ "designations": [
+  {
+   "designation": "Jupiter XXVIII",
+   "kind": "roman-numeral",
+   "since": 2002
+  }
+ ],
+ "discovery": {
+  "announcement_year": 2002,
+  "discoverer": "Sheppard et al.",
+  "discovery_year": 2001
+ },
+ "id": "autonoe",
+ "ingest_origin": "batch",
+ "name": "Autonoe",
+ "orbital": {
+  "apoapsis_au": 0.21082636438888833,
+  "eccentricity": 0.326,
+  "epoch_jd": 2451545.0,
+  "inclination_deg": 150.7,
+  "orbital_period_days": 749.61,
+  "orbital_period_years": 2.0523203285420943,
+  "periapsis_au": 0.10716211885227052,
+  "rates_json": {},
+  "semi_major_axis_au": 0.15899424162057943,
+  "semi_major_axis_km": 23785200.0
+ },
+ "parent_id": "jupiter",
+ "physical": {
+  "absolute_magnitude_h": 15.5,
+  "dimensions_json": [],
+  "mass_kg": 34000000000000.004,
+  "radius_km": 2.0
+ },
+ "provenance": {
+  "conflicts": [],
+  "sources": [
+   {
+    "fields_provided": [
+     "absolute_magnitude_h",
+     "announcement_year",
+     "discoverer",
+     "discovery_year",
+     "eccentricity",
+     "inclination_deg",
+     "mass_kg",
+     "orbital_period_days",
+     "radius_km",
+     "semi_major_axis_au",
+     "semi_major_axis_km"
+    ],
+    "retrieved_date": "2026-03-01",
+    "source_name": "Jupiter moons table (JPL/SSD via Helios db)",
+    "source_url": "https://ssd.jpl.nasa.gov/sats/elem/"
+   }
+  ]
+ },
+ "render": {
+  "color_hex": null,
+  "radius": null,
+  "rings": {}
+ },
+ "stellar": {},
+ "superseded_by": null,
+ "system": "Jovian System",
+ "system_id": null,
+ "updated_at": "2026-09-12T00:00:00Z"
+}

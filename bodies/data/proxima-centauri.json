@@ -1,0 +1,58 @@
+{
+  "id": "proxima-centauri",
+  "name": "Proxima Centauri",
+  "classification": "star",
+  "aliases": [
+    "Proxima",
+    "Proxima Cen",
+    "Alpha Centauri C",
+    "α Centauri C",
+    "HD 11632",
+    "HIP 70890",
+    "GJ 551",
+    "LHS 49"
+  ],
+  "parent_id": null,
+  "system_id": "alpha-centauri",
+  "render": {
+    "color_hex": "#6d8a6d",
+    "radius": 1.8
+  },
+  "physical": {
+    "radius_km": 107000.0,
+    "mass_kg": 2.427e29,
+    "spectral_type": "M5.5Ve"
+  },
+  "orbital": {
+    "epoch_jd": 2451545.0,
+    "semi_major_axis_au": null,
+    "eccentricity": null,
+    "inclination_deg": null,
+    "longitude_ascending_node_deg": null,
+    "argument_periapsis_deg": null,
+    "mean_longitude_deg": null,
+    "orbital_period_days": null
+  },
+  "discovery": {
+    "detection_method": "astrometry",
+    "discovery_status": "confirmed",
+    "minimum_mass_earth": null
+  },
+  "astrometry": {
+    "distance_pc": 1.30119,
+    "parallax_mas": 768.50,
+    "proper_motion_ra_mas_yr": -3781.31,
+    "proper_motion_dec_mas_yr": 769.766,
+    "radial_velocity_km_s": -22.2
+  },
+  "catalog_ids": {
+    "HIP": "HIP 70890",
+    "GJ": "GJ 551",
+    "LHS": "LHS 49",
+    "Gaia DR3": "Gaia DR3 5538295552908430976"
+  },
+  "j2000": {
+    "ra": "14h 29m 42.9461331854s",
+    "dec": "-62° 40′ 46.164680672″"
+  }
+}
