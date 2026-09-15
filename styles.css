@@ -14,29 +14,43 @@
 /* Shared Zero tokens. Helios chrome defaults to the dark pair because the
    3D viewport is space-black; light OS themes only affect panels. */
 :root {
-  --zero-bg: #121212;
-  --zero-fg: #fbfbfb;
-  --zero-accent: #fa4e16;
+  /* Zero ANSI palette (Ghostty-inspired). Indices 2/4/10/12 share
+     Periwinkle Blue, 9/13 share Bright Orange, 6/14 share Muted Teal,
+     and 11/15 share Warm Cream — all intentional. */
+  --zero-black: #0a0a0a;         /* 0 */
+  --zero-red: #e06c75;           /* 1 Dusty Red */
+  --zero-blue: #6ba1e6;          /* 2/4/10/12 Periwinkle Blue */
+  --zero-gold: #e5c07b;          /* 3 Warm Gold */
+  --zero-orange: #f24911;        /* 5 Zero's Orange™ */
+  --zero-teal: #56b6c2;          /* 6/14 Muted Teal */
+  --zero-white: #eeeeee;         /* 7 Soft White */
+  --zero-gray: #606060;          /* 8 Gray */
+  --zero-bright-orange: #EE7948; /* 9/13 Bright Orange */
+  --zero-cream: #FFF7F1;         /* 11/15 Warm Cream */
+
+  --zero-bg: var(--zero-black);
+  --zero-fg: var(--zero-cream);
+  --zero-accent: var(--zero-orange);
 
   --zero-font-sans: 'Source Sans 3', system-ui, sans-serif;
   --zero-font-mono: 'Ioskeley Mono', ui-monospace, monospace;
   --zero-font-wordmark: 'Terminal Grotesque Open', 'Source Sans 3', sans-serif;
 
-  --chrome-bg: rgba(18, 18, 18, 0.92);
-  --chrome-panel: rgba(18, 18, 18, 0.94);
-  --chrome-border: #2a2a2a;
-  --chrome-hover: rgba(250, 78, 22, 0.16);
+  --chrome-bg: color-mix(in srgb, var(--zero-black) 92%, transparent);
+  --chrome-panel: color-mix(in srgb, var(--zero-black) 94%, transparent);
+  --chrome-border: color-mix(in srgb, var(--zero-gray) 55%, var(--zero-black));
+  --chrome-hover: color-mix(in srgb, var(--zero-orange) 16%, transparent);
   --chrome-fg: var(--zero-fg);
-  --chrome-muted: #a8a8a8;
+  --chrome-muted: color-mix(in srgb, var(--zero-white) 68%, var(--zero-black));
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --chrome-bg: rgba(251, 251, 251, 0.94);
-    --chrome-panel: rgba(251, 251, 251, 0.96);
-    --chrome-border: #e4e2de;
-    --chrome-fg: #121212;
-    --chrome-muted: #5b5b5b;
+    --chrome-bg: color-mix(in srgb, var(--zero-cream) 94%, transparent);
+    --chrome-panel: color-mix(in srgb, var(--zero-cream) 96%, transparent);
+    --chrome-border: color-mix(in srgb, var(--zero-gray) 22%, var(--zero-cream));
+    --chrome-fg: var(--zero-black);
+    --chrome-muted: var(--zero-gray);
   }
 }
 
@@ -58,7 +72,7 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font
   letter-spacing: 0.02em;
   pointer-events: none;
   white-space: nowrap;
-  color: rgba(251, 251, 251, 0.9);
+  color: rgba(255, 247, 241, 0.9);
   background: rgba(0, 0, 0, 0.35);
   border-radius: 4px;
   padding: 1px 5px;
@@ -70,36 +84,36 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font
 .body-label.is-planet {
   font-size: 13px;
   font-weight: 600;
-  color: #fbfbfb;
+  color: #FFF7F1;
   letter-spacing: 0.03em;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 1), 0 0 8px rgba(0, 0, 0, 0.95);
 }
 .body-label.is-major-moon {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(251, 251, 251, 0.92);
+  color: rgba(255, 247, 241, 0.92);
 }
 .body-label.is-secondary-moon {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(251, 251, 251, 0.72);
+  color: rgba(255, 247, 241, 0.72);
 }
 .body-label.is-minor-moon {
   font-size: 10px;
   font-weight: 400;
-  color: rgba(251, 251, 251, 0.6);
+  color: rgba(255, 247, 241, 0.6);
 }
 .body-label.is-low-confidence {
-  color: rgba(251, 251, 251, 0.9);
+  color: rgba(255, 247, 241, 0.9);
   font-style: italic;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(250, 78, 22, 0.35);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(242, 73, 17, 0.35);
 }
 /* Interface-layer selection/focus states — the only sanctioned accent in-scene. */
 .body-label.is-selected,
 .body-label.is-focused {
   color: var(--zero-accent);
   border: 1px solid var(--zero-accent);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(250, 78, 22, 0.55);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(242, 73, 17, 0.55);
 }
 .body-label[hidden] { display: none; }
 .search-control {
